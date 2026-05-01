@@ -3,19 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ألوان الوضع الفاتح - Light Mode */
+  --background: #ecf6f9;
+  --foreground: #040316;
+  --primary: #006c75;
+  --secondary: #071717;
+  --accent: #0cca32;
+  --text: #040316;
+  --paragraph: #4b5563;
+  --primary-foreground: #ffffff
+  /* لون رمادي غامق للفقرات ليصبح أخف من النص الأساسي */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* عندما يتم إضافة كلاس .dark للـ body أو html */
+.dark {
+  --background: #0a0a0a;
+  /* الخلفية التي اقترحتها لك */
+  --foreground: #f0f0f0;
+  /* لون النص الأساسي في الليلي */
+  --primary: #008a94;
+  /* درجة أفتح قليلاً من الـ primary لتبرز في الأسود */
+  --secondary: #ecf6f9;
+  --accent: #0cca32;
+  --text: #ffffff;
+  --paragraph: #9ca3af;
+  --primary-foreground: #ffffff
+  /* لون رمادي فاتح للفقرات في الوضع الليلي */
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-300;
+    font-family: Arial, Helvetica, sans-serif;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  p {
+    @apply text-[var(--paragraph)];
+  }
 }
