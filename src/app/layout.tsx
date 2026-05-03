@@ -63,7 +63,7 @@ export default function RootLayout({
         <Services />
         <Contact />
         <Footer />
-        {/* {children} */}
+        {children}
       </body>
     </html>
   );

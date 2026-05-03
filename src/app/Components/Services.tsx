@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaCode, FaRocket, FaBrain, FaDatabase, FaServer } from "react-icons/fa";
+import { FaCode, FaRocket, FaBrain, FaServer } from "react-icons/fa";
 
 const services = [
     {

@@ -1,10 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  SiReact, SiNextdotjs, SiTailwindcss, SiBootstrap, SiLaravel,
+  SiReact, SiNextdotjs, SiTailwindcss, SiLaravel,
   SiMysql, SiFirebase, SiPostgresql, SiJavascript, SiPhp,
   SiCplusplus, SiRedux, SiTypescript, SiOpenjdk, SiGithubpages,
-  SiReactquery, // إضافة الأيقونات الناقصة
+  SiReactquery, 
 } from "react-icons/si";
 
 import {

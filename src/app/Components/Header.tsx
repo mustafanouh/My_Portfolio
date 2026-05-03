@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Search, Settings } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
