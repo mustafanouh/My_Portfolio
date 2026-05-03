@@ -15,12 +15,14 @@ const Header = () => {
     ];
 
     return (
-        <nav className="bg-background border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 transition-colors duration-300">
+        <nav
+            style={{ backgroundColor: 'oklch(from var(--background) l c h / 0.95)' }}
+            className="bg-background  border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 transition-colors duration-300">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between h-20">
 
-                    {/* Logo - يستخدم متغيرات النص والـ Primary */}
-                    <div className="flex-shrink-0 text-2xl font-bold text-foreground">
+                    
+                    <div className="font-cairo flex-shrink-0 text-2xl font-bold text-foreground">
                         Mustafa <span className="text-primary">Nouh</span>
                     </div>
 
@@ -40,9 +42,7 @@ const Header = () => {
                         </div>
 
                         <div className="flex items-center space-x-4 border-l border-gray-300 dark:border-gray-700 pl-6">
-                            <Search className="w-5 h-5 text-foreground/60 cursor-pointer hover:text-primary transition-colors" />
 
-                            {/* زر الإعدادات - يستخدم الـ Primary والـ Accent عند التفاعل */}
                             <Link
                                 href="/settings"
                                 className="bg-primary text-white p-2 rounded-full hover:bg-secondary hover:shadow-[0_0_15px_var(--accent)] transition-all duration-300"
@@ -78,10 +78,6 @@ const Header = () => {
                                 </Link>
                             ))}
                             <div className="pt-4 flex flex-col space-y-4 border-t border-gray-200 dark:border-gray-800">
-                                <div className="flex items-center text-foreground/70 px-2">
-                                    <Search className="w-5 h-5 mr-2" />
-                                    <span>Search</span>
-                                </div>
                                 <Link
                                     href="/settings"
                                     onClick={() => setIsOpen(false)}

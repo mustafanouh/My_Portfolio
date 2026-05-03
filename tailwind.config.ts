@@ -9,6 +9,10 @@ export default {
   darkMode: 'class', // تفعيل الوضع الليلي عبر الكلاس
   theme: {
     extend: {
+      fontFamily: {
+        cairo: ["var(--font-cairo)"],
+        inter: ["var(--font-inter)"],
+      },
       colors: {
         // الألوان التي اخترتها أنت
         brand: {

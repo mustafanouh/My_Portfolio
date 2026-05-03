@@ -6,9 +6,12 @@ import { FiDownload, FiSend, FiGithub, FiLinkedin, FiTwitter, FiInstagram } from
 const Hero = () => {
   const titles = [
     "Full Stack Developer",
+    "Frontend Specialist",
+    "Backend Architect",
     "Creative Engineer",
     "UI/UX Visionary",
-    "Next.js Expert"
+    "Next.js Expert",
+    "Laravel Developer",
   ];
   const [index, setIndex] = useState(0);
 
@@ -20,7 +23,7 @@ const Hero = () => {
   }, [titles.length]);
 
   return (
-    <section id="About" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[var(--background)] px-4 py-20">
+    <section id="About" className="relative font-cairo min-h-screen w-full   flex items-center justify-center overflow-hidden bg-[var(--background)] px-16 py-20">
       
       {/* 1. Dynamic Background (Orb Lights) */}
       <div className="absolute inset-0 overflow-hidden">
@@ -49,11 +52,11 @@ const Hero = () => {
               Available for Freelance & Projects
             </span>
             
-            <h1 className="text-5xl md:text-7xl font-black text-[var(--text)] leading-tight mb-4">
+            <h1 className=" text-5xl md:text-7xl font-black text-[var(--text)] leading-tight mb-4">
               Mustafa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">Nouh</span>
             </h1>
 
-            <div className="h-16 mb-6">
+            <div className="h-16 mb-1">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={titles[index]}

@@ -12,8 +12,10 @@
   --text: #040316;
   --paragraph: #4b5563;
   --primary-foreground: #ffffff
-  /* لون رمادي غامق للفقرات ليصبح أخف من النص الأساسي */
+    /* لون رمادي غامق للفقرات ليصبح أخف من النص الأساسي */
 }
+
+
 
 /* عندما يتم إضافة كلاس .dark للـ body أو html */
 .dark {
@@ -28,7 +30,7 @@
   --text: #ffffff;
   --paragraph: #9ca3af;
   --primary-foreground: #ffffff
-  /* لون رمادي فاتح للفقرات في الوضع الليلي */
+    /* لون رمادي فاتح للفقرات في الوضع الليلي */
 }
 
 @layer base {
@@ -41,3 +43,4 @@
     @apply text-[var(--paragraph)];
   }
 }
+

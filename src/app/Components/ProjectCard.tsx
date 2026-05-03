@@ -2,102 +2,132 @@
 import React, { useState } from "react";
 import { Myproject } from "./Myproject";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { FiGithub, FiArrowRight, FiLayout } from "react-icons/fi";
+
+const categories = ["All", "Full Stack", "Web Design","Frameworks"];
 
 const ProjectCard = () => {
-  const [currentActive, setcurenActive] = useState("all");
+  const [active, setActive] = useState("All");
   const [arr, setArr] = useState(Myproject);
 
-  const handleFilter = (category: string) => {
-    setcurenActive(category);
-    if (category === "all") {
-      setArr(Myproject);
-    } else {
-      const filtered = Myproject.filter((item) => item.category === category);
-      setArr(filtered);
-    }
+  const handleFilter = (cat: string) => {
+    setActive(cat);
+    setArr(cat === "All" ? Myproject : Myproject.filter((p) => p.category === cat));
   };
 
   return (
-    <main id="Projects" className="py-20 px-4 md:px-10 bg-[var(--background)]">
+    <main id="Projects" className= " font-cairo py-20 px-4 md:px-10  bg-[var(--background)]">
       <div className="container mx-auto">
         {/* Section Header */}
-        <div className="mb-12 text-center lg:text-left">
-          <h2 className="text-4xl font-bold text-[var(--text)] mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-[var(--primary)] rounded-full mx-auto lg:mx-0"></div>
+        <div className="mb-10 text-center">
+          <h2 className="text-4xl font-bold text-[var(--text)] mb-4">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">Projects</span>
+          </h2>
+          <div className="w-16 h-[3px] bg-[var(--primary)] rounded-full mx-auto" />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left Section: Filters */}
-          <section className="flex flex-wrap lg:flex-col gap-3 min-w-[200px]">
-            {["all", "css", "javaScript", "Bootstrap", "react"].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => handleFilter(cat)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 text-sm capitalize
-                  ${currentActive === cat
-                    ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20 scale-105"
-                    : "bg-[var(--foreground)]/5 text-[var(--paragraph)] hover:bg-[var(--foreground)]/10"
-                  }`}
-              >
-                {cat === "all" ? "All Projects" : cat}
-              </button>
-            ))}
-          </section>
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => handleFilter(cat)}
+              className={
+                "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border " +
+                (active === cat
+                  ? "bg-[var(--text)] text-[var(--background)] border-transparent"
+                  : "bg-transparent text-[var(--paragraph)] border-[var(--foreground)]/20 hover:bg-[var(--foreground)]/5")
+              }
+            >
+              {cat === "All" ? "All Projects" : cat}
+            </button>
+          ))}
+        </div>
 
-          {/* Right Section: Project Grid */}
-          <section className="flex-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout">
-              {arr.map((item) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ type: "spring", damping: 15, stiffness: 100 }}
-                  key={item.imgpath}
-                  className="group bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 rounded-3xl overflow-hidden backdrop-blur-sm hover:border-[var(--primary)]/30 transition-colors"
-                >
-                  {/* Project Image */}
-                  <div className="relative overflow-hidden h-48">
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <AnimatePresence mode="popLayout">
+            {arr.map((item) => (
+              <motion.div
+                layout
+                key={item.projectTitle}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ type: "spring", damping: 22, stiffness: 120 }}
+                className="group bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 rounded-2xl overflow-hidden flex flex-col hover:border-[var(--foreground)]/20 hover:-translate-y-1 transition-all duration-200"
+              >
+                {/* Image Section */}
+                <div className="relative overflow-hidden h-36 bg-[var(--foreground)]/5">
+                  {item.imgpath ? (
                     <img
                       src={item.imgpath}
                       alt={item.projectTitle}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                      <a href={item.path} target="_blank" className="p-3 bg-white text-black rounded-full hover:bg-[var(--primary)] hover:text-white transition-colors">
-                        <FiExternalLink size={20} />
-                      </a>
+                  ) : (
+                    <div className="flex items-center justify-center h-full">
+                      <FiLayout size={28} className="text-[var(--foreground)]/20" />
                     </div>
+                  )}
+                </div>
+
+                {/* Content Section */}
+                <div className="p-4 flex flex-col gap-2 flex-1">
+                  <span className="text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-full w-fit bg-[var(--foreground)]/10 text-[var(--paragraph)]">
+                    {item.category}
+                  </span>
+
+                  <h3 className="text-sm font-bold text-[var(--text)] leading-snug">
+                    {item.projectTitle}
+                  </h3>
+
+                  <p className="text-xs text-[var(--paragraph)] leading-relaxed line-clamp-2 flex-1">
+                    {item.subTitle}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {item.tags?.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] px-2 py-0.5 rounded border border-[var(--foreground)]/10 text-[var(--paragraph)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  {/* Project Details */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-[var(--text)] mb-2 capitalize">{item.projectTitle}</h3>
-                    <p className="text-sm text-[var(--paragraph)] leading-relaxed mb-6 opacity-80 line-clamp-2">
-                      {item.subTitle}
-                    </p>
+                {/* Footer Links */}
+                <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--foreground)]/10">
+                  {item.path && item.path !== "#" ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-1.5 text-xs text-[var(--paragraph)] hover:text-[var(--text)] transition-colors"
+                    >
+                      <FiGithub size={13} />
+                      GitHub
+                    </a>
+                  ) : (
+                    <span />
+                  )}
 
-                    <div className="flex items-center justify-between mt-auto">
-                      <div className="flex gap-3">
-                        <a href={item.path} className="text-[var(--paragraph)] hover:text-[var(--primary)] transition-colors">
-                          <FiGithub size={20} />
-                        </a>
-                        <a href={item.path} className="text-[var(--paragraph)] hover:text-[var(--primary)] transition-colors">
-                          <FiExternalLink size={20} />
-                        </a>
-                      </div>
-
-                      <a href={item.path} className="flex items-center gap-1 text-sm font-bold text-[var(--primary)] group-hover:gap-2 transition-all">
-                        Live Demo <FiArrowRight />
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </section>
+                  {item.LivePath && item.LivePath !== "#" && item.LivePath !== "" && (
+                    <a
+                      href={item.LivePath}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-1 text-xs font-semibold text-[var(--text)] hover:gap-2 transition-all"
+                    >
+                      Preview <FiArrowRight size={12} />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </main>

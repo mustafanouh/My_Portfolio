@@ -4,7 +4,7 @@ import { FiCode, FiDatabase, FiLayers } from "react-icons/fi";
 
 const About = () => {
   return (
-    <section id="About" className="relative py-16 md:py-24 bg-[var(--background)] overflow-hidden">
+    <section id="About" className=" font-cairo relative py-4 md:py-24 bg-[var(--background)] overflow-hidden">
       {/* Background Glow Effect - Adjusted for better mobile performance */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-[var(--primary)]/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
 
@@ -56,7 +56,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-6 bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 backdrop-blur-md rounded-3xl p-6 md:p-8"
+              className="hidden md:block grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-6 bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 backdrop-blur-md rounded-3xl p-6 md:p-8"
             >
               <div className="flex flex-col sm:flex-row lg:flex-row items-center lg:items-start text-center sm:text-left lg:text-left gap-4">
                 <div className="p-3 bg-[var(--primary)]/10 text-[var(--primary)] rounded-xl shrink-0">

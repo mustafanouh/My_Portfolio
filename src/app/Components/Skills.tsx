@@ -1,96 +1,83 @@
 "use client";
 import { motion } from "framer-motion";
-
-// استيراد الأيقونات التقنية - تم تعديل المسميات لتطابق مقترحات Turbopack
-import { 
-  SiReact, 
-  SiNextdotjs, 
-  SiTailwindcss, 
-  SiBootstrap, 
-  SiLaravel, 
-  SiMysql, 
-  SiFirebase, 
-  SiPostgresql, 
-  SiJavascript, 
-  SiPhp, 
-  SiCplusplus, 
-  SiRedux, 
- 
+import {
+  SiReact, SiNextdotjs, SiTailwindcss, SiBootstrap, SiLaravel,
+  SiMysql, SiFirebase, SiPostgresql, SiJavascript, SiPhp,
+  SiCplusplus, SiRedux, SiTypescript, SiOpenjdk, SiGithubpages,
+  SiReactquery, // إضافة الأيقونات الناقصة
 } from "react-icons/si";
 
-
-import { 
-  FiCode, 
-  FiServer, 
-  FiDatabase, 
-  FiCpu, 
-  FiUserCheck 
+import {
+  FiCode, FiServer, FiDatabase, FiCpu, FiUserCheck,
+  FiSearch, FiZap, FiActivity, FiBox
 } from "react-icons/fi";
+import { TbApi, TbLockCode } from "react-icons/tb";
 
 const Skills = () => {
   const skillsData = [
     {
       title: "Frontend Development",
       mainIcon: <FiCode className="text-blue-500" />,
-      color: "from-blue-500/20 to-cyan-500/20",
       skills: [
         { name: "React.js", icon: <SiReact className="text-[#61DAFB]" /> },
-        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
         { name: "Redux", icon: <SiRedux className="text-[#764ABC]" /> },
         { name: "Tailwind", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-        { name: "Bootstrap", icon: <SiBootstrap className="text-[#7952B3]" /> },
-      
+        { name: "Zustand", icon: <FiBox className="text-[#433921]" /> },
+        { name: "React Query", icon: <SiReactquery className="text-[#FF4154]" /> },
       ]
     },
     {
       title: "Backend Development",
       mainIcon: <FiServer className="text-emerald-500" />,
-      color: "from-emerald-500/20 to-teal-500/20",
       skills: [
         { name: "Laravel", icon: <SiLaravel className="text-[#FF2D20]" /> },
-        { name: "REST API", icon: <FiServer /> },
-        { name: "Sanctum", icon: <SiLaravel className="opacity-50" /> },
+        { name: "REST API", icon: <TbApi className="text-emerald-400" /> },
+        { name: "Sanctum", icon: <TbLockCode className="text-[#FF2D20] opacity-80" /> },
         { name: "JWT", icon: <SiPhp className="text-[#777BB4]" /> },
-        { name: "Meilisearch", icon: <FiCode className="scale-75" /> },
+        { name: "Meilisearch", icon: <FiSearch className="text-[#FF5C5C]" /> },
+        { name: "Reverb", icon: <FiZap className="text-[#FF2D20]" /> },
       ]
     },
     {
       title: "Database Systems",
       mainIcon: <FiDatabase className="text-orange-500" />,
-      color: "from-orange-500/20 to-yellow-500/20",
       skills: [
         { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
         { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
+        { name: "Oracle", icon: <></> },
         { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
       ]
     },
     {
       title: "Languages",
       mainIcon: <FiCpu className="text-purple-500" />,
-      color: "from-purple-500/20 to-pink-500/20",
       skills: [
         { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+        { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
         { name: "PHP", icon: <SiPhp className="text-[#777BB4]" /> },
         { name: "C++", icon: <SiCplusplus className="text-[#00599C]" /> },
-        { name: "SQL", icon: <SiMysql /> },
+        { name: "Java", icon: <SiOpenjdk className="text-[#ED8B00]" /> },
+        { name: "SQL", icon: <FiDatabase className="text-[#4479A1]" /> },
       ]
     },
     {
       title: "Soft Skills & Tools",
       mainIcon: <FiUserCheck className="text-red-500" />,
-      color: "from-red-500/20 to-orange-500/20",
       skills: [
-        { name: "Problem Solving", icon: <FiCode /> },
-        { name: "ICDL", icon: <FiUserCheck /> },
-        { name: "Debugging", icon: <FiCode className="opacity-50" /> },
+        { name: "Problem Solving", icon: <FiCode className="text-gray-400" /> },
+        { name: "Power BI", icon: <></> },
+        { name: "Debugging", icon: <FiActivity className="text-red-400" /> },
+        { name: "Collaboration", icon: <SiGithubpages className="text-white" /> },
+        { name: "ICDL", icon: <FiUserCheck className="text-blue-400" /> },
       ]
     }
   ];
 
   return (
-    <section id="Skills" className="relative py-24 bg-[var(--background)] overflow-hidden">
+    <section id="Skills" className="font-cairo relative py-24 bg-[var(--background)] overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -110,7 +97,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`p-8 rounded-[2rem] bg-gradient-to-br ${category.color} border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl`}
+              className="p-8 rounded-[2rem] bg-gray-50 border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-4 bg-[var(--background)] rounded-2xl text-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-lg">
@@ -121,7 +108,7 @@ const Skills = () => {
 
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, sIdx) => (
-                  <div 
+                  <div
                     key={sIdx}
                     className="flex items-center gap-2.5 px-4 py-2.5 bg-[var(--background)]/90 text-[var(--paragraph)] rounded-xl border border-white/5 hover:scale-105 hover:bg-[var(--background)] hover:text-[var(--text)] transition-all cursor-default text-sm font-bold shadow-sm"
                   >
@@ -136,6 +123,6 @@ const Skills = () => {
       </div>
     </section>
   );
-};
+}; // نهاية الدالة
 
 export default Skills;
