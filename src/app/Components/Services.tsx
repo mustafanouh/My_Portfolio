@@ -7,25 +7,25 @@ const services = [
         title: "Full-Stack Development",
         description: "Building scalable web applications using Laravel, React, and Next.js with a focus on performance.",
         icon: <FaCode />,
-       
+
     },
     {
         title: "Real-time Solutions",
         description: "Implementing live features like instant messaging and real-time notifications using WebSockets.",
         icon: <FaRocket />,
-    
+
     },
     {
         title: "AI & RAG Systems",
         description: "Integrating LLMs and RAG technology to create intelligent agents and automated workflows.",
         icon: <FaBrain />,
-      
+
     },
     {
         title: "Backend Architecture",
         description: "Designing robust database schemas and secure APIs to handle complex business logic.",
         icon: <FaServer />,
-    
+
     }
 ];
 
@@ -45,7 +45,7 @@ const Services = () => {
                         Transforming complex requirements into seamless digital experiences through modern technology.
                     </p>
                 </div>
-             
+
 
                 <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {services.map((service, index) => (
@@ -57,7 +57,7 @@ const Services = () => {
                             whileHover={{ y: -10 }}
                             className="relative group p-8 bg-white/5 border bg-slate-50   border-white/10 rounded-[2rem] overflow-hidden"
                         >
-                            {/* تأثير الخلفية عند الـ Hover */}
+
                             <div className={`absolute inset-0 bg-gradient-to-br bg-slate-50 opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
                             <div className="relative z-10">

@@ -12,6 +12,8 @@ import SkillsMarquee from "./Components/SkillsMarquee";
 import Contact from "./Components/Contact";
 import Services from "./Components/Services";
 
+import { Providers } from "./providers";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -47,23 +49,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} ${inter.variable} antialiased`
 
         }
       >
         <Header />
-        <Hero />
-        <SkillsMarquee />
-
-        <ProjectCard />
-        <About />
-        <Skills />
-        <Services />
-        <Contact />
-        <Footer />
+       
+        <Providers>
         {children}
+        </Providers>
+        <Footer />
       </body>
     </html>
   );

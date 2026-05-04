@@ -26,15 +26,7 @@ export const Myproject = [
         LivePath: "https://mustafanouh.github.io/Store/",
         subTitle: "A clean, multi-page e-commerce layout focused on semantic HTML and modern CSS architecture."
     },
-    // {
-    //     projectTitle: "Nexus Landing Page",
-    //     category: "Web Design",
-    //     tags: ['HTML', 'CSS', 'JavaScript'],
-    //     imgpath: "/img/project-one.png",
-    //     path: "https://github.com/mustafanouh/landing_page-/",
-    //     LivePath: "https://mustafanouh.github.io/landing_page-/",
-    //     subTitle: "High-conversion landing page featuring advanced CSS layouts and responsive design patterns."
-    // },
+
     {
         projectTitle: "AdminInsight Dashboard",
         category: "Web Design",
@@ -78,7 +70,7 @@ export const Myproject = [
         category: "Frameworks",
         tags: ['JavaScript', 'React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
         imgpath: "/img/protfile.png",
-        path: "#",
+        path: "https://github.com/mustafanouh/Mustafa_Nouh_profile",
         LivePath: "#",
         subTitle: "Professional developer showcase featuring React.js components and fluid Framer Motion animations."
     },

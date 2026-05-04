@@ -13,10 +13,10 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { name: 'GitHub',    icon: <FaGithub />,   href: 'https://github.com/mustafanouh' },
-        { name: 'LinkedIn',  icon: <FaLinkedin />,  href: 'https://linkedin.com/in/mustafanouh' },
-        { name: 'X',         icon: <FaXTwitter />,  href: 'https://x.com/Mustafa_Nouh_sy' },
-        { name: 'WhatsApp',  icon: <FaWhatsapp />,  href: 'https://wa.me/963985690091' },
+        { name: 'GitHub', icon: <FaGithub />, href: 'https://github.com/mustafanouh' },
+        { name: 'LinkedIn', icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/mustafa-nouh-92a93a293?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+        { name: 'X', icon: <FaXTwitter />, href: 'https://x.com/Mustafa_Nouh_sy' },
+        { name: 'WhatsApp', icon: <FaWhatsapp />, href: 'https://wa.me/963985690091' },
     ];
 
     const navLinks = ['About', 'Projects', 'Skills', 'Contact'];
@@ -129,7 +129,7 @@ const Footer = () => {
                         transition={{ delay: 0.2 }}
                         className="lg:col-span-3 flex justify-center sm:justify-end items-start"
                     >
-                        <div className="w-full max-w-[260px] p-7 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 backdrop-blur-md space-y-5">
+                        <div className="w-full max-w-[260px] p-7 rounded-[2rem]   backdrop-blur-md space-y-5">
                             <div>
                                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--paragraph)] opacity-40 mb-1">
                                     Available for work
@@ -139,7 +139,7 @@ const Footer = () => {
                                 </h4>
                             </div>
 
-                            <a 
+                            <a
                                 href="mailto:mustafa.nouh@gmail.com"
                                 className="group flex items-center justify-center gap-2.5 w-full py-3.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white text-sm font-black rounded-xl hover:shadow-[0_0_24px_rgba(124,58,237,0.35)] transition-all duration-300"
                             >
@@ -147,7 +147,7 @@ const Footer = () => {
                                 Hire Me
                             </a>
 
-                            <a 
+                            <a
                                 href="https://wa.me/963985690091"
                                 target="_blank"
                                 rel="noopener noreferrer"

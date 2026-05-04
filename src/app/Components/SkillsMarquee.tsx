@@ -11,7 +11,6 @@ import {
     SiJavascript, SiPhp, SiMysql, SiFirebase
 } from "react-icons/si";
 
-// دالة wrap يدوية
 const wrap = (min: number, max: number, v: number) => {
     const rangeSize = max - min;
     return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
@@ -68,7 +67,7 @@ const SkillsMarquee = () => {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             className="relative w-full  bg-[var(--background)]
-                       overflow-hidden border-y border-white/5 cursor-ew-resize"
+                       overflow-hidden  border-white/5 cursor-ew-resize"
         >
             <div className="absolute inset-y-0 left-0 w-24 md:w-40
                             bg-gradient-to-r from-[var(--background)]

@@ -55,7 +55,7 @@ const ProjectCard = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: "spring", damping: 22, stiffness: 120 }}
-                className="group bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 rounded-2xl overflow-hidden flex flex-col hover:border-[var(--foreground)]/20 hover:-translate-y-1 transition-all duration-200"
+                className="group bg-white/5 border  dark:border-[#e5e7eb3d] border-[var(--foreground)]/10 rounded-2xl overflow-hidden flex flex-col hover:border-[var(--foreground)]/20 hover:-translate-y-1 transition-all duration-200"
               >
                 {/* Image Section */}
                 <div className="relative overflow-hidden h-36 bg-[var(--foreground)]/5">
@@ -78,7 +78,7 @@ const ProjectCard = () => {
                     {item.category}
                   </span>
 
-                  <h3 className="text-sm font-bold text-[var(--text)] leading-snug">
+                  <h3 className="text-sm font-medium text-[var(--text)] leading-snug">
                     {item.projectTitle}
                   </h3>
 
@@ -90,7 +90,7 @@ const ProjectCard = () => {
                     {item.tags?.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] px-2 py-0.5 rounded border border-[var(--foreground)]/10 text-[var(--paragraph)]"
+                        className="text-[10px] px-2 py-0.5 rounded border dark:border-[#e5e7eb3d] border-[var(--foreground)]/10 text-[var(--paragraph)]"
                       >
                         {tag}
                       </span>
@@ -99,7 +99,7 @@ const ProjectCard = () => {
                 </div>
 
                 {/* Footer Links */}
-                <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--foreground)]/10">
+                <div className="flex items-center justify-between px-4 py-3 border-t  dark:border-[#e5e7eb3d] border-[var(--foreground)]/10">
                   {item.path && item.path !== "#" ? (
                     <a
                       href={item.path}
@@ -119,7 +119,7 @@ const ProjectCard = () => {
                       href={item.LivePath}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1 text-xs font-semibold text-[var(--text)] hover:gap-2 transition-all"
+                      className="flex items-center gap-1 text-xs font-light text-[var(--text)] hover:gap-2 transition-all"
                     >
                       Preview <FiArrowRight size={12} />
                     </a>

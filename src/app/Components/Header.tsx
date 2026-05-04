@@ -2,16 +2,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Settings } from 'lucide-react';
+import { LuHouse, LuBriefcase, LuLayoutDashboard, LuUser, LuMail } from "react-icons/lu";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+
     const navLinks = [
-        { name: 'Home', href: '/' },
-        { name: 'Services', href: '#services' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'About', href: '#about' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Home', href: '/', icon: <LuHouse /> },
+        { name: 'Services', href: '#services', icon: <LuBriefcase /> },
+        { name: 'Projects', href: '#projects', icon: <LuLayoutDashboard /> },
+        { name: 'About', href: '#about', icon: <LuUser /> },
+        { name: 'Contact', href: '#contact', icon: <LuMail /> },
     ];
 
     return (
@@ -21,9 +23,9 @@ const Header = () => {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between h-20">
 
-                    
+
                     <div className="font-cairo flex-shrink-0 text-2xl font-bold text-foreground">
-                        Mustafa <span className="text-primary">Nouh</span>
+                        Mustafa <span className="text-[var(--accent)]">Nouh</span>
                     </div>
 
                     {/* Desktop Navigation */}
@@ -33,8 +35,7 @@ const Header = () => {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    // الاعتماد على الشفافية (70%) للفقرات/الروابط كما طلبت
-                                    className="text-foreground/70 hover:text-primary transition-colors duration-200 font-medium"
+                                    className="text-foreground/70 hover:text-brand-accent font-bold transition-colors duration-200 "
                                 >
                                     {link.name}
                                 </Link>
@@ -72,9 +73,9 @@ const Header = () => {
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-foreground/80 hover:text-primary  font-bold  text-lg px-2"
+                                    className="text-foreground/80 hover:text-primary flex items-center gap-2 font-bold  text-lg px-2"
                                 >
-                                    {link.name}
+                                    <span className='text-[var(--accent)]'> {link.icon}</span>   {link.name}
                                 </Link>
                             ))}
                             <div className="pt-4 flex flex-col space-y-4 border-t border-gray-200 dark:border-gray-800">

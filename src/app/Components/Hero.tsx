@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, color } from "framer-motion";
 import { FiDownload, FiSend, FiGithub, FiLinkedin, FiTwitter, FiInstagram } from "react-icons/fi";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Hero = () => {
   const titles = [
@@ -24,23 +26,23 @@ const Hero = () => {
 
   return (
     <section id="About" className="relative font-cairo min-h-screen w-full   flex items-center justify-center overflow-hidden bg-[var(--background)] px-16 py-20">
-      
+
       {/* 1. Dynamic Background (Orb Lights) */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
           transition={{ duration: 20, repeat: Infinity }}
-          className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-[var(--primary)]/20 blur-[120px] rounded-full" 
+          className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-[var(--primary)]/20 blur-[120px] rounded-full"
         />
-        <motion.div 
+        <motion.div
           animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
           transition={{ duration: 15, repeat: Infinity }}
-          className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-[var(--accent)]/10 blur-[120px] rounded-full" 
+          className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-[var(--accent)]/10 blur-[120px] rounded-full"
         />
       </div>
 
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16 z-10">
-        
+
         {/* 2. Content Section */}
         <div className="flex-1 text-left flex flex-col items-center lg:items-start order-2 lg:order-1">
           <motion.div
@@ -51,7 +53,7 @@ const Hero = () => {
             <span className="px-4 py-2 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-sm font-bold border border-[var(--primary)]/20 mb-6 inline-block">
               Available for Freelance & Projects
             </span>
-            
+
             <h1 className=" text-5xl md:text-7xl font-black text-[var(--text)] leading-tight mb-4">
               Mustafa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">Nouh</span>
             </h1>
@@ -83,7 +85,7 @@ const Hero = () => {
               >
                 <FiDownload size={20} /> Download CV
               </motion.button>
-              
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -96,16 +98,16 @@ const Hero = () => {
             {/* Glassmorphism Social Icons */}
             <div className="flex gap-4">
               {[
-                { icon: <FiGithub />, link: "https://github.com/mustafanouh" },
-                { icon: <FiLinkedin />, link: "#" },
-                { icon: <FiTwitter />, link: "#" },
-                { icon: <FiInstagram />, link: "#" }
+                { icon: <FiGithub />, link: "https://github.com/mustafanouh", color: "#333" },
+                { icon: <FiLinkedin />, link: "https://www.linkedin.com/in/mustafa-nouh-92a93a293?utm_source=share_via&utm_content=profile&utm_medium=member_android", color: "#0077B5" },
+                { icon: <FaXTwitter />, link: "https://x.com/Mustafa_Nouh_sy", color: "#000" },
+                { icon: <FaWhatsapp />, link: "https://wa.me/963985690091", color: "#25D366" }
               ].map((item, i) => (
                 <motion.a
                   key={i}
                   href={item.link}
-                  whileHover={{ y: -5, backgroundColor: "var(--primary)", color: "#fff" }}
-                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-[var(--foreground)]/5 text-[var(--text)] border border-[var(--foreground)]/10 backdrop-blur-md transition-all"
+                  whileHover={{ y: -5, backgroundColor: item.color, color: "#fff" }}
+                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-[var(--foreground)]/5  {text-{item.color}} border border-[var(--foreground)]/10 backdrop-blur-md transition-all"
                 >
                   {item.icon}
                 </motion.a>
@@ -128,9 +130,9 @@ const Hero = () => {
 
             {/* Glass Image Frame */}
             <div className="relative w-full h-full p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl">
-              <img 
-                src="./img/mustafa-1.jpg" 
-                alt="Mustafa Nouh" 
+              <img
+                src="./img/mustafa-1.jpg"
+                alt="Mustafa Nouh"
                 className="w-full h-full object-cover rounded-[2.5rem] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 hover:scale-100"
               />
             </div>

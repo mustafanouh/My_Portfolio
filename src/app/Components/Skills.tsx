@@ -17,7 +17,7 @@ const Skills = () => {
   const skillsData = [
     {
       title: "Frontend Development",
-      mainIcon: <FiCode className="text-blue-500" />,
+      mainIcon: <FiCode className="text-[var(--accent)]" />,
       skills: [
         { name: "React.js", icon: <SiReact className="text-[#61DAFB]" /> },
         { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
@@ -29,7 +29,7 @@ const Skills = () => {
     },
     {
       title: "Backend Development",
-      mainIcon: <FiServer className="text-emerald-500" />,
+      mainIcon: <FiServer className="text-[var(--accent)]" />,
       skills: [
         { name: "Laravel", icon: <SiLaravel className="text-[#FF2D20]" /> },
         { name: "REST API", icon: <TbApi className="text-emerald-400" /> },
@@ -41,7 +41,7 @@ const Skills = () => {
     },
     {
       title: "Database Systems",
-      mainIcon: <FiDatabase className="text-orange-500" />,
+      mainIcon: <FiDatabase className="text-[var(--accent)]" />,
       skills: [
         { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
         { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
@@ -51,7 +51,7 @@ const Skills = () => {
     },
     {
       title: "Languages",
-      mainIcon: <FiCpu className="text-purple-500" />,
+      mainIcon: <FiCpu className="text-[var(--accent)]" />,
       skills: [
         { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
         { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
@@ -63,7 +63,7 @@ const Skills = () => {
     },
     {
       title: "Soft Skills & Tools",
-      mainIcon: <FiUserCheck className="text-red-500" />,
+      mainIcon: <FiUserCheck className="text-[var(--accent)]" />,
       skills: [
         { name: "Problem Solving", icon: <FiCode className="text-gray-400" /> },
         { name: "Power BI", icon: <></> },
@@ -97,7 +97,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-[2rem] bg-gray-50 border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl"
+              className="p-8 rounded-[2rem] bg-white/5  bg-gray-50 border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-4 bg-[var(--background)] rounded-2xl text-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-lg">

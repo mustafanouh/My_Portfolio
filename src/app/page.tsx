@@ -1,9 +1,22 @@
+import Header from "./Components/Header";
+import About from "./Components/About";
+import ProjectCard from "./Components/ProjectCard";
+import Hero from "./Components/Hero";
+import Skills from "./Components/Skills";
+import SkillsMarquee from "./Components/SkillsMarquee";
+import Contact from "./Components/Contact";
+import Services from "./Components/Services";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center  p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      
-   
-    </div>
+    <main>
+      <section id="home"><Hero /></section>
+      <SkillsMarquee />
+      <section id="projects"><ProjectCard /></section>
+      <section id="about"><About /></section>
+      <Skills />
+      <section id="services"><Services /></section>
+      <section id="contact"><Contact /></section>
+    </main>
   );
 }

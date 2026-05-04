@@ -16,7 +16,7 @@ const contactItems = [
         icon: <FaEnvelope />,
         href: "mailto:Mustafa.Nouh.Nouh@gmail.com",
         color: "#EA4335",
-        glow: "rgba(124,58,237,0.25)",
+        glow: "rgba(234, 67, 53, 0.25)",
     },
     {
         label: "WHATSAPP",
@@ -38,7 +38,7 @@ const contactItems = [
         label: "LINKEDIN",
         value: "Mustaf Nouh",
         icon: <FaLinkedin />,
-        href: "https://linkedin.com/in/mustafanouh",
+        href: "https://www.linkedin.com/in/mustafa-nouh-92a93a293?utm_source=share_via&utm_content=profile&utm_medium=member_android    ",
         color: "#0a66c2",
         glow: "rgba(10,102,194,0.25)",
     },
