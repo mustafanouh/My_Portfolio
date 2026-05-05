@@ -8,6 +8,7 @@ import {
     FaEnvelope
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { LuBriefcase, LuHouse, LuLayoutDashboard, LuMail, LuUser } from "react-icons/lu";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -19,7 +20,14 @@ const Footer = () => {
         { name: 'WhatsApp', icon: <FaWhatsapp />, href: 'https://wa.me/963985690091' },
     ];
 
-    const navLinks = ['About', 'Projects', 'Skills', 'Contact'];
+       const navLinks = [
+            { name: 'Home', href: '/', icon: <LuHouse /> },
+            { name: 'Services', href: '#services', icon: <LuBriefcase /> },
+            {name:'Skills',href:'#Skills' ,icon:<>/\</>},
+            { name: 'Projects', href: '#projects', icon: <LuLayoutDashboard /> },
+            { name: 'About', href: '#about', icon: <LuUser /> },
+            { name: 'Contact', href: '#contact', icon: <LuMail /> },
+        ];
     const expertise = ['Full-Stack Dev', 'UI/UX Design', 'API Architecture'];
 
     return (
@@ -65,7 +73,7 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                     title={link.name}
                                     whileHover={{ y: -4, scale: 1.1 }}
-                                    className="p-3.5 bg-white/5 border border-white/10 rounded-2xl text-[var(--text)] hover:text-[var(--primary)] hover:border-[var(--primary)]/40 transition-all duration-300"
+                                    className="p-3.5  bg-white/5 border border-white/10 rounded-2xl text-[var(--text)] hover:text-[var(--primary)] hover:border-[var(--primary)]/40 transition-all duration-300"
                                 >
                                     <span className="text-xl">{link.icon}</span>
                                 </motion.a>
@@ -85,13 +93,13 @@ const Footer = () => {
                             Explore
                         </h3>
                         <ul className="space-y-4">
-                            {navLinks.map((item) => (
-                                <li key={item}>
+                            {navLinks.map((item,id) => (
+                                <li key={id}>
                                     <Link
-                                        href={`#${item}`}
-                                        className="text-sm text-[var(--paragraph)] opacity-60 hover:opacity-100 hover:text-[var(--text)] transition-all duration-300"
+                                        href={item.href}
+                                        className="text-sm  items-center gap-2 flex text-[var(--paragraph)] opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all duration-300"
                                     >
-                                        {item}
+                                        <span className="text-[var(--accent)]">{item.icon}</span> {item.name}
                                     </Link>
                                 </li>
                             ))}
@@ -140,7 +148,7 @@ const Footer = () => {
                             </div>
 
                             <a
-                                href="mailto:mustafa.nouh@gmail.com"
+                                href="mailto:mustafa.nouh.nouh@gmail.com"
                                 className="group flex items-center justify-center gap-2.5 w-full py-3.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white text-sm font-black rounded-xl hover:shadow-[0_0_24px_rgba(124,58,237,0.35)] transition-all duration-300"
                             >
                                 <FaEnvelope className="group-hover:rotate-12 transition-transform duration-300" />

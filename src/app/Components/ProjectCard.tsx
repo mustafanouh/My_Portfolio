@@ -33,7 +33,7 @@ const ProjectCard = () => {
               key={cat}
               onClick={() => handleFilter(cat)}
               className={
-                "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border " +
+                "px-5 py-2 font-bold rounded-full text-sm  transition-all duration-200 border " +
                 (active === cat
                   ? "bg-[var(--text)] text-[var(--background)] border-transparent"
                   : "bg-transparent text-[var(--paragraph)] border-[var(--foreground)]/20 hover:bg-[var(--foreground)]/5")
@@ -90,7 +90,7 @@ const ProjectCard = () => {
                     {item.tags?.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] px-2 py-0.5 rounded border dark:border-[#e5e7eb3d] border-[var(--foreground)]/10 text-[var(--paragraph)]"
+                        className="text-[10px] px-2 py-0.5 rounded border dark:border-[#e5e7eb3d] border-[var(--foreground)]/10 text-[var(--accent)]"
                       >
                         {tag}
                       </span>
@@ -121,7 +121,7 @@ const ProjectCard = () => {
                       rel="noreferrer"
                       className="flex items-center gap-1 text-xs font-light text-[var(--text)] hover:gap-2 transition-all"
                     >
-                      Preview <FiArrowRight size={12} />
+                      Preview <FiArrowRight className="text-[var(--accent)]" size={12} />
                     </a>
                   )}
                 </div>

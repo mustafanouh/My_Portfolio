@@ -31,7 +31,7 @@ const contactItems = [
         value: "Mustaf Nouh",
         icon: <FaGithub />,
         href: "https://github.com/mustafanouh",
-        color: "#e2e8f0",
+        color: "#abaeb2",
         glow: "rgba(226,232,240,0.15)",
     },
     {
@@ -47,8 +47,9 @@ const contactItems = [
         value: "@Mustafa_Nouh_sy",
         icon: <FaXTwitter />,
         href: "https://x.com/Mustafa_Nouh_sy",
-        color: "primary",
+        color: "#000000",
         glow: "rgba(255,255,255,0.1)",
+       
     },
     {
         label: "LOCATION",
@@ -98,7 +99,6 @@ const ContactCard = ({
                 <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{
-                        background: `${item.color}15`,
                         border: `1px solid ${item.color}30`,
                         color: item.color,
                         boxShadow: `0 0 20px ${item.glow}`,

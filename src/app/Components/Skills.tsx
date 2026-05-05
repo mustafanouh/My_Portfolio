@@ -123,6 +123,6 @@ const Skills = () => {
       </div>
     </section>
   );
-}; // نهاية الدالة
+}; 
 
 export default Skills;

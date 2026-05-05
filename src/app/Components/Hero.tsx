@@ -78,21 +78,25 @@ const Hero = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-row gap-4 mb-12">
-              <motion.button
+              <motion.a
+                href="/files/CV_Mustafa_Nouh.pdf"
+                download="Mustafa_Nouh_CV.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-8 py-4 bg-[var(--primary)] text-white rounded-2xl font-bold shadow-[0_10px_20px_-10px_var(--primary)] transition-all hover:shadow-[0_20px_40px_-15px_var(--primary)]"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-[var(--primary)] text-white rounded-2xl font-bold shadow-[0_10px_20px_-10px_var(--primary)] transition-all hover:shadow-[0_20px_40px_-15px_var(--primary)] cursor-pointer"
               >
                 <FiDownload size={20} /> Download CV
-              </motion.button>
+              </motion.a>
 
-              <motion.button
+              <motion.a
+                href="#Contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 px-8 py-4 border-2 border-[var(--secondary)] text-[var(--text)] rounded-2xl font-bold hover:bg-[var(--secondary)] hover:text-[var(--background)] transition-all"
+
               >
                 <FiSend size={20} /> Contact Me
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Glassmorphism Social Icons */}

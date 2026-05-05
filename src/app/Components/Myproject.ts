@@ -2,7 +2,7 @@ export const Myproject = [
     {
         projectTitle: "EduManage Pro",
         category: "Full Stack",
-        imgpath: "/img/System Management School2.png",
+        imgpath: "/img/System Management School.png",
         tags: ['Php', 'MySQL', 'Laravel','tailwind CSS', 'JavaScript', 'Blade','Alpine.js','MVC'],
         path: "https://github.com/mustafanouh/School-Administration",
         LivePath: "", 
