@@ -6,7 +6,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class', // تفعيل الوضع الليلي عبر الكلاس
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -14,7 +14,6 @@ export default {
         inter: ["var(--font-inter)"],
       },
       colors: {
-        // الألوان التي اخترتها أنت
         brand: {
           primary: "#006c75",
           secondary: "#071717",
@@ -26,12 +25,11 @@ export default {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
         },
-        // ألوان الوضع الليلي المقترحة (يمكنك تغييرها لاحقاً)
         dark: {
-          bg: "#0a0a0a",       // أسود عميق للخلفية
-          surface: "#1a1a1a",  // رمادي غامق للعناصر المرتفعة كـ الـ Header
-          text: "#f0f0f0",     // أبيض مكسور للنصوص
-          muted: "#a0a0a0",    // نص خافت للفقرات
+          bg: "#0a0a0a",       
+          surface: "#1a1a1a",  
+          text: "#f0f0f0",    
+          muted: "#a0a0a0",   
         }
       },
       keyframes: {
