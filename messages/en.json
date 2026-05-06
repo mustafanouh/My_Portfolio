@@ -10,5 +10,139 @@
   },
   "Index": {
     "title": "Welcome to my portfolio"
+  },
+  "navigation": {
+    "Home": "Home",
+    "Services": "Services",
+    "Projects": "Projects",
+    "About": "About",
+    "Contact": "Contact",
+    "Settings": "Settings"
   }
+  ,
+  "Hero": {
+    "status": "Available for Freelance & Projects",
+    "name": "Mustafa",
+    "surname": "Nouh",
+    "description": "I design and develop high-performance digital experiences that blend functionality with aesthetics. Specialized in building scalable systems using modern web technologies.",
+    "download_cv": "Download CV",
+    "contact_me": "Contact Me",
+    "experience": "+2 Years Exp.",
+    "titles": ["Full Stack Developer", "Frontend Specialist", "Backend Architect", "Next.js Expert", "Laravel Developer"]
+  
+}
+,
+  "Projects": {
+    "title": "Featured",
+    "subtitle": "Projects",
+    "all_projects": "All Projects",
+    "categories": {
+      "All": "All",
+      "Full Stack": "Full Stack",
+      "Web Design": "Web Design",
+      "Frameworks": "Frameworks"
+    },
+    "links": {
+      "preview": "Preview"
+    }
+   
+  }
+  ,
+  
+  "About": {
+    "header_main": "Engineering Digital",
+    "header_accent": "Experiences",
+    "summary_pre": "Results-driven ",
+    "summary_post": " and ITE student with hands-on experience designing and delivering scalable web applications.",
+    "role": "Full Stack Web Developer",
+    "p1_pre": "Proficient in ",
+    "p1_post": " with MySQL, and experienced in implementing secure authentication systems using JWT and Laravel Sanctum.",
+    "p2_pre": "Proven ability to build responsive, user-focused interfaces alongside robust back-end architectures — demonstrated through real-world projects like a ",
+    "school_project": "School Management System",
+    "p3": "Committed to writing clean, maintainable code with a strong focus on performance, reliability, and long-term scalability.",
+    "stats": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "clean_code": "Clean Code",
+      "clean_desc": "Scalability & Performance"
+    }
+  },
+  
+  "Skills": {
+    "title": "Technical",
+    "subtitle": "Arsenal"
+  
+},
+
+  "Services": {
+    "title_my": "My",
+    "title_special": "Specialties",
+    "description": "Transforming complex requirements into seamless digital experiences through modern technology.",
+    "items": {
+      "fullstack": {
+        "title": "Full-Stack Development",
+        "desc": "Building scalable web applications using Laravel, React, and Next.js with a focus on performance."
+      },
+      "realtime": {
+        "title": "Real-time Solutions",
+        "desc": "Implementing live features like instant messaging and real-time notifications using WebSockets."
+      },
+      "ai": {
+        "title": "AI & RAG Systems",
+        "desc": "Integrating LLMs and RAG technology to create intelligent agents and automated workflows."
+      },
+      "backend": {
+        "title": "Backend Architecture",
+        "desc": "Designing robust database schemas and secure APIs to handle complex business logic."
+      }
+    }
+  },
+  
+  "Contact": {
+    "badge": "GET IN TOUCH",
+    "title_pre": "LET'S",
+    "title_accent": "CONNECT",
+    "description": "Have a project in mind or just want to say hi? Reach out through any of these channels.",
+    "labels": {
+      "email": "EMAIL",
+      "whatsapp": "WHATSAPP",
+      "github": "GITHUB",
+      "linkedin": "LINKEDIN",
+      "x": "X (TWITTER)",
+      "location": "LOCATION"
+    },
+    "location_val": "Syria 🇸🇾"
+  },
+  
+  "Footer": {
+    "bio": "Informatics Engineer specializing in crafting high-end digital experiences. Turning complex logic into elegant, scalable web solutions.",
+    "explore": "Explore",
+    "expertise": "Expertise",
+    "expertise_list": ["Full-Stack Dev", "UI/UX Design", "API Architecture"],
+    "cta": {
+      "status": "Available for work",
+      "title": "Have a Vision?",
+      "hire_me": "Hire Me",
+      "whatsapp": "WhatsApp"
+    },
+    "bottom": {
+      "rights": "© {year} Mustafa Nouh • Crafted with Passion",
+      "location": "Aleppo, Syria"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "skills": "Skills",
+      "projects": "Projects",
+      "about": "About",
+      "contact": "Contact"
+    }
+  
+}
+
+
+
+  
+
+
 }

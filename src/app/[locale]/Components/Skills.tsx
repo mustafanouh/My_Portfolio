@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations, useLocale } from "next-intl";
 import {
   SiReact, SiNextdotjs, SiTailwindcss, SiLaravel,
   SiMysql, SiFirebase, SiPostgresql, SiJavascript, SiPhp,
@@ -14,6 +15,10 @@ import {
 import { TbApi, TbLockCode } from "react-icons/tb";
 
 const Skills = () => {
+  const t = useTranslations("Skills");
+  const locale = useLocale();
+  const isRtl = locale === 'ar';
+
   const skillsData = [
     {
       title: "Frontend Development",
@@ -45,7 +50,7 @@ const Skills = () => {
       skills: [
         { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
         { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
-        { name: "Oracle", icon: <></> },
+        { name: "Oracle", icon: <div className="w-4 h-4 rounded-full bg-red-600" /> }, // أيقونة بديلة لأوراكل
         { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
       ]
     },
@@ -66,7 +71,7 @@ const Skills = () => {
       mainIcon: <FiUserCheck className="text-[var(--accent)]" />,
       skills: [
         { name: "Problem Solving", icon: <FiCode className="text-gray-400" /> },
-        { name: "Power BI", icon: <></> },
+        { name: "Power BI", icon: <div className="w-4 h-4 rounded-full bg-yellow-500" /> }, // أيقونة بديلة لباور بي آي
         { name: "Debugging", icon: <FiActivity className="text-red-400" /> },
         { name: "Collaboration", icon: <SiGithubpages className="text-white" /> },
         { name: "ICDL", icon: <FiUserCheck className="text-blue-400" /> },
@@ -75,20 +80,27 @@ const Skills = () => {
   ];
 
   return (
-    <section id="Skills" className="font-cairo relative py-24 bg-[var(--background)] overflow-hidden">
+    <section id="Skills" className="font-cairo lg:mx-10 relative py-24 bg-[var(--background)] overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
+        
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center lg:text-left"
+          className={`mb-16  text-center ${isRtl ? 'lg:text-right' : 'lg:text-left'}`}
         >
           <h2 className="text-4xl md:text-5xl font-black text-[var(--text)] mb-4 tracking-tight">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">Arsenal</span>
+            {isRtl ? (
+              <> {t('title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">{t('subtitle')}</span> </>
+            ) : (
+              <> {t('title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">{t('subtitle')}</span> </>
+            )}
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-full mx-auto lg:mx-0" />
+          <div className={`w-20 h-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-full mx-auto ${isRtl ? 'lg:mr-0 lg:ml-auto' : 'lg:ml-0'}`} />
         </motion.div>
 
+        {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillsData.map((category, idx) => (
             <motion.div
@@ -97,16 +109,16 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-[2rem] bg-white/5  bg-gray-50 border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl"
+              className={`p-8 rounded-[2rem] bg-white/5 border border-[var(--foreground)]/10 backdrop-blur-md group hover:border-[var(--primary)]/30 transition-all duration-500 shadow-xl ${isRtl ? 'text-right' : 'text-left'}`}
             >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-4 bg-[var(--background)] rounded-2xl text-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-lg">
+              <div className={`flex items-center gap-4 mb-8 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className="p-4 bg-[var(--background)] rounded-2xl text-2xl group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-lg shrink-0">
                   {category.mainIcon}
                 </div>
                 <h3 className="text-xl font-extrabold text-[var(--text)]">{category.title}</h3>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className={`flex flex-wrap gap-3 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
                 {category.skills.map((skill, sIdx) => (
                   <div
                     key={sIdx}

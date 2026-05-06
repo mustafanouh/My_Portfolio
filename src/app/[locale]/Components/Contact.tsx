@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslations, useLocale } from "next-intl";
 import {
     FaEnvelope,
     FaWhatsapp,
@@ -9,112 +10,51 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const contactItems = [
-    {
-        label: "EMAIL",
-        value: "Mustafa.Nouh.Nouh@gmail.com",
-        icon: <FaEnvelope />,
-        href: "mailto:Mustafa.Nouh.Nouh@gmail.com",
-        color: "#EA4335",
-        glow: "rgba(234, 67, 53, 0.25)",
-    },
-    {
-        label: "WHATSAPP",
-        value: "+963 985 690 091",
-        icon: <FaWhatsapp />,
-        href: "https://wa.me/963985690091",
-        color: "#25d366",
-        glow: "rgba(37,211,102,0.25)",
-    },
-    {
-        label: "GITHUB",
-        value: "Mustaf Nouh",
-        icon: <FaGithub />,
-        href: "https://github.com/mustafanouh",
-        color: "#abaeb2",
-        glow: "rgba(226,232,240,0.15)",
-    },
-    {
-        label: "LINKEDIN",
-        value: "Mustaf Nouh",
-        icon: <FaLinkedin />,
-        href: "https://www.linkedin.com/in/mustafa-nouh-92a93a293?utm_source=share_via&utm_content=profile&utm_medium=member_android    ",
-        color: "#0a66c2",
-        glow: "rgba(10,102,194,0.25)",
-    },
-    {
-        label: "X",
-        value: "@Mustafa_Nouh_sy",
-        icon: <FaXTwitter />,
-        href: "https://x.com/Mustafa_Nouh_sy",
-        color: "#000000",
-        glow: "rgba(255,255,255,0.1)",
-       
-    },
-    {
-        label: "LOCATION",
-        value: "Syria 🇸🇾",
-        icon: <FaMapMarkerAlt />,
-        href: null,
-        color: "#f97316",
-        glow: "rgba(249,115,22,0.25)",
-    },
-];
-
 const ContactCard = ({
     item,
     index,
+    isRtl
 }: {
-    item: (typeof contactItems)[0];
+    item: any;
     index: number;
+    isRtl: boolean;
 }) => {
     const content = (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ delay: index * 0.08, duration: 0.5 }}
             whileHover={{ y: -6, scale: 1.02 }}
-            className="group relative p-6 rounded-[2rem] border border-white/[0.06] bg-gray-50 backdrop-blur-xl cursor-pointer overflow-hidden transition-all duration-300"
-            style={
-                {
-                    "--card-glow": item.glow,
-                    "--card-color": item.color,
-                } as React.CSSProperties
-            }
+            className={`group relative p-6 rounded-[2rem] border border-[var(--text)]/[0.08] bg-[var(--text)]/[0.03] dark:bg-white/5 backdrop-blur-xl cursor-pointer overflow-hidden transition-all duration-300 ${isRtl ? 'text-right' : 'text-left'}`}
         >
             {/* Glow bg on hover */}
             <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"
-                style={{ background: `radial-gradient(circle at 30% 50%, ${item.glow}, transparent 70%)` }}
+                style={{ background: `radial-gradient(circle at ${isRtl ? '70%' : '30%'} 50%, ${item.glow}, transparent 70%)` }}
             />
 
-            {/* Top border glow */}
-            <div
-                className="absolute top-0 left-8 right-8 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: `linear-gradient(90deg, transparent, ${item.color}, transparent)` }}
-            />
-
-            <div className="relative z-10 flex items-center gap-5">
-                {/* Icon */}
+            <div className={`relative z-10 flex items-center gap-5 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
+                {/* Icon Container */}
                 <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{
-                        border: `1px solid ${item.color}30`,
+                        border: `1px solid ${item.color}40`,
                         color: item.color,
-                        boxShadow: `0 0 20px ${item.glow}`,
+                        boxShadow: `0 0 15px ${item.glow}`,
                     }}
                 >
                     {item.icon}
                 </div>
 
                 {/* Text */}
-                <div className="min-w-0">
-                    <p className="text-xs font-bold tracking-[0.2em] opacity-40 mb-1">
+                <div className="min-w-0 flex-1">
+                    <p className="text-xs font-bold tracking-[0.2em] opacity-50 mb-1 text-[var(--text)]">
                         {item.label}
                     </p>
                     <p
-                        className="font-bold text-base truncate transition-colors duration-300"
-                        style={{ color: item.href ? item.color : "var(--paragraph, #e2e8f0)" }}
+                        className="font-bold text-sm md:text-base truncate transition-colors duration-300"
+                        style={{ color: item.href ? item.color : "var(--text)" }}
                     >
                         {item.value}
                     </p>
@@ -123,7 +63,7 @@ const ContactCard = ({
                 {/* Arrow */}
                 {item.href && (
                     <div
-                        className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 text-lg flex-shrink-0"
+                        className={`opacity-0 group-hover:opacity-100 transition-all duration-300 text-lg flex-shrink-0 ${isRtl ? '-translate-x-2 group-hover:translate-x-0 rotate-[-90deg]' : 'translate-x-2 group-hover:translate-x-0'}`}
                         style={{ color: item.color }}
                     >
                         ↗
@@ -135,7 +75,7 @@ const ContactCard = ({
 
     if (item.href) {
         return (
-            <a href={item.href} target="_blank" rel="noopener noreferrer">
+            <a href={item.href} target="_blank" rel="noopener noreferrer" className="block">
                 {content}
             </a>
         );
@@ -145,49 +85,97 @@ const ContactCard = ({
 };
 
 const Contact = () => {
+    const t = useTranslations("Contact");
+    const locale = useLocale();
+    const isRtl = locale === 'ar';
+
+    const contactItems = [
+        {
+            label: t('labels.email'),
+            value: "Mustafa.Nouh.Nouh@gmail.com",
+            icon: <FaEnvelope />,
+            href: "mailto:Mustafa.Nouh.Nouh@gmail.com",
+            color: "#EA4335", 
+            glow: "rgba(234, 67, 53, 0.15)",
+        },
+        {
+            label: t('labels.whatsapp'),
+            value: "+963 985 690 091",
+            icon: <FaWhatsapp />,
+            href: "https://wa.me/963985690091",
+            color: "#25D366", 
+            glow: "rgba(37, 211, 102, 0.15)",
+        },
+        {
+            label: t('labels.github'),
+            value: "Mustafa Nouh",
+            icon: <FaGithub />,
+            href: "https://github.com/mustafanouh",
+            color: "var(--text)",
+            glow: "rgba(128, 128, 128, 0.1)",
+        },
+        {
+            label: t('labels.linkedin'),
+            value: "Mustafa Nouh",
+            icon: <FaLinkedin />,
+            href: "https://www.linkedin.com/in/mustafa-nouh-92a93a293",
+            color: "#0A66C2", 
+            glow: "rgba(10, 102, 194, 0.15)",
+        },
+        {
+            label: t('labels.x'),
+            value: "@Mustafa_Nouh_sy",
+            icon: <FaXTwitter />,
+            href: "https://x.com/Mustafa_Nouh_sy",
+            color: "var(--text)",
+            glow: "rgba(0, 0, 0, 0.1)",
+        },
+        {
+            label: t('labels.location'),
+            value: t('location_val'),
+            icon: <FaMapMarkerAlt />,
+            href: null,
+            color: "#F97316", // Orange
+            glow: "rgba(249, 115, 22, 0.15)",
+        },
+    ];
+
     return (
-        <section
-            id="Contact"
-            className="relative py-24 bg-[var(--background)] overflow-hidden"
-        >
-            {/* Background glows */}
-            <div className="absolute top-1/3 -right-32 w-[500px] h-[500px] bg-[var(--primary)]/5 blur-[140px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 -left-20 w-[300px] h-[300px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
+        <section id="Contact" className="relative py-24 bg-[var(--background)] overflow-hidden transition-colors duration-500">
+            {/* Background glows - تقليل الشفافية لتناسب الوضعين */}
+            <div className="absolute top-1/3 -right-32 w-[500px] h-[500px] bg-[var(--primary)]/10 dark:bg-[var(--primary)]/5 blur-[140px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 -left-20 w-[300px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto">
-
-                    {/* Header */}
-                    <div className="mb-16 text-center sm:text-left">
+                    <div className={`mb-16 text-center ${isRtl ? 'sm:text-right' : 'sm:text-left'}`}>
                         <motion.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-xs font-bold tracking-[0.4em] text-[var(--primary)] mb-4 opacity-70"
+                            className="text-xs font-bold tracking-[0.4em] text-[var(--primary)] mb-4 opacity-70 uppercase"
                         >
-                            GET IN TOUCH
+                            {t('badge')}
                         </motion.p>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-black tracking-tighter mb-4"
+                            className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-[var(--text)]"
                         >
-                            LET'S{" "}
+                            {t('title_pre')}{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">
-                                CONNECT
+                                {t('title_accent')}
                             </span>
                         </motion.h2>
-                        <p className="text-[var(--paragraph)] text-lg max-w-xl opacity-60">
-                            Have a project in mind or just want to say hi? Reach out through any of these channels.
+                        <p className="text-[var(--paragraph)] text-lg max-w-xl opacity-70">
+                            {t('description')}
                         </p>
                     </div>
 
-                    {/* Cards Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {contactItems.map((item, index) => (
-                            <ContactCard key={item.label} item={item} index={index} />
+                            <ContactCard key={item.label} item={item} index={index} isRtl={isRtl} />
                         ))}
                     </div>
-
                 </div>
             </div>
         </section>

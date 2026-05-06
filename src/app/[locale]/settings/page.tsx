@@ -4,9 +4,11 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
-import { HiSun, HiMoon, HiDesktopComputer } from "react-icons/hi";
+import { HiSun, HiMoon, HiDesktopComputer, HiOutlineArrowNarrowRight, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { HiCheck } from "react-icons/hi2";
 import { MdLanguage, MdPalette } from "react-icons/md";
+
+
 
 const themes = [
     { id: "light", icon: HiSun, labelKey: "light" },
@@ -29,6 +31,7 @@ export default function SettingsComponent() {
     useEffect(() => setMounted(true), []);
 
     const currentLocale = pathname.split("/")[1];
+
 
     const handleLanguageChange = (newLocale: string) => {
         const segments = pathname.split("/");
@@ -60,8 +63,8 @@ export default function SettingsComponent() {
                                 key={id}
                                 onClick={() => setTheme(id)}
                                 className={`group relative flex flex-col items-center gap-2 py-4 rounded-xl text-[11px] font-bold transition-all duration-300 ${active
-                                        ? "bg-white dark:bg-brand-primary text-brand-primary dark:text-white shadow-md scale-[1.02]"
-                                        : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-white/50 dark:hover:bg-white/5"
+                                    ? "bg-white dark:bg-brand-primary text-brand-primary dark:text-white shadow-md scale-[1.02]"
+                                    : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-white/50 dark:hover:bg-white/5"
                                     }`}
                             >
                                 <Icon className={`text-xl transition-transform duration-300 ${active ? 'scale-110' : 'group-hover:scale-110'}`} />
@@ -90,8 +93,8 @@ export default function SettingsComponent() {
                                 key={value}
                                 onClick={() => handleLanguageChange(value)}
                                 className={`group flex items-center justify-between px-5 py-4 rounded-[1.25rem] border-2 transition-all duration-300 ${active
-                                        ? "border-brand-primary/20 bg-brand-primary/[0.03] dark:bg-brand-primary/10"
-                                        : "border-transparent bg-gray-50 dark:bg-black/20 hover:border-gray-200 dark:hover:border-white/10"
+                                    ? "border-brand-primary/20 bg-brand-primary/[0.03] dark:bg-brand-primary/10"
+                                    : "border-transparent bg-gray-50 dark:bg-black/20 hover:border-gray-200 dark:hover:border-white/10"
                                     }`}
                             >
                                 <div className="flex items-center gap-4">
@@ -107,8 +110,8 @@ export default function SettingsComponent() {
                                 </div>
 
                                 <div className={`w-6 h-6 flex items-center justify-center rounded-full border-2 transition-all duration-300 ${active
-                                        ? "bg-brand-primary border-brand-primary dark:bg-brand-accent dark:border-brand-accent scale-100"
-                                        : "border-gray-200 dark:border-white/10 scale-90 opacity-50"
+                                    ? "bg-brand-primary border-brand-primary dark:bg-brand-accent dark:border-brand-accent scale-100"
+                                    : "border-gray-200 dark:border-white/10 scale-90 opacity-50"
                                     }`}>
                                     <HiCheck className={`text-white dark:text-brand-secondary text-sm ${active ? "opacity-100" : "opacity-0"}`} />
                                 </div>
@@ -116,6 +119,24 @@ export default function SettingsComponent() {
                         );
                     })}
                 </div>
+            </section>
+
+            <section className="mt-4 px-2">
+                <a
+                    href="/"
+                    className="flex items-center justify-center w-full py-4 bg-brand-primary dark:bg-brand-accent rounded-2xl transition-all duration-300 hover:opacity-90"
+                >
+                    <div className="flex items-center gap-2 text-white dark:text-brand-secondary">
+                        {currentLocale === 'ar' ? (
+                            <HiOutlineArrowNarrowRight className="text-lg" />
+                        ) : (
+                            <HiOutlineArrowNarrowLeft className="text-lg" />
+                        )}
+                        <span className="text-[11px] font-black uppercase tracking-[0.2em]">
+                            {currentLocale === 'ar' ? 'العودة للرئيسية' : 'Back to Home'}
+                        </span>
+                    </div>
+                </a>
             </section>
         </div>
     );

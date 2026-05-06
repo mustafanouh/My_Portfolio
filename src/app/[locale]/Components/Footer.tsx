@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import { useTranslations, useLocale } from "next-intl";
 import {
     FaGithub,
     FaLinkedin,
@@ -11,27 +12,32 @@ import { FaXTwitter } from "react-icons/fa6";
 import { LuBriefcase, LuCpu, LuHouse, LuLayoutDashboard, LuMail, LuUser } from "react-icons/lu";
 
 const Footer = () => {
+    const t = useTranslations("Footer");
+    const locale = useLocale();
+    const isRtl = locale === 'ar';
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
         { name: 'GitHub', icon: <FaGithub />, href: 'https://github.com/mustafanouh' },
-        { name: 'LinkedIn', icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/mustafa-nouh-92a93a293?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+        { name: 'LinkedIn', icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/mustafa-nouh-92a93a293' },
         { name: 'X', icon: <FaXTwitter />, href: 'https://x.com/Mustafa_Nouh_sy' },
         { name: 'WhatsApp', icon: <FaWhatsapp />, href: 'https://wa.me/963985690091' },
     ];
 
-       const navLinks = [
-            { name: 'Home', href: '/', icon: <LuHouse /> },
-            { name: 'Services', href: '#services', icon: <LuBriefcase /> },
-            {name:'Skills',href:'#Skills' ,icon:<LuCpu/>},
-            { name: 'Projects', href: '#projects', icon: <LuLayoutDashboard /> },
-            { name: 'About', href: '#about', icon: <LuUser /> },
-            { name: 'Contact', href: '#contact', icon: <LuMail /> },
-        ];
-    const expertise = ['Full-Stack Dev', 'UI/UX Design', 'API Architecture'];
+    const navLinks = [
+        { name: t('nav.home'), href: '/', icon: <LuHouse /> },
+        { name: t('nav.services'), href: '#services', icon: <LuBriefcase /> },
+        { name: t('nav.skills'), href: '#Skills', icon: <LuCpu /> },
+        { name: t('nav.projects'), href: '#projects', icon: <LuLayoutDashboard /> },
+        { name: t('nav.about'), href: '#about', icon: <LuUser /> },
+        { name: t('nav.contact'), href: '#contact', icon: <LuMail /> },
+    ];
+
+    // لجلب المصفوفة من JSON
+    const expertiseList = t.raw('expertise_list') as string[];
 
     return (
-        <footer className="relative pt-24 pb-12 bg-[var(--background)] overflow-hidden border-t border-white/5">
+        <footer className={`relative pt-24 pb-12 bg-[var(--background)] overflow-hidden border-t border-white/5 ${isRtl ? 'font-arabic' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
 
             {/* Bottom glow effect */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[var(--primary)]/8 blur-[120px] rounded-full pointer-events-none" />
@@ -46,9 +52,9 @@ const Footer = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-5 flex flex-col items-center sm:items-start gap-8 text-center sm:text-left"
+                        className="lg:col-span-5 flex flex-col items-center sm:items-start gap-8 text-center sm:text-start"
                     >
-                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-none">
+                        <h2 className={`text-4xl md:text-5xl font-black tracking-tighter leading-none ${isRtl ? 'tracking-normal' : ''}`}>
                             <span className="text-[var(--text)]">MUSTAFA</span>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]"> . </span>
                             <span
@@ -60,8 +66,7 @@ const Footer = () => {
                         </h2>
 
                         <p className="max-w-sm text-base leading-relaxed text-[var(--paragraph)] opacity-60">
-                            Informatics Engineer specializing in crafting high-end digital experiences.
-                            Turning complex logic into elegant, scalable web solutions.
+                            {t('bio')}
                         </p>
 
                         <div className="flex flex-wrap justify-center sm:justify-start gap-3">
@@ -73,7 +78,7 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                     title={link.name}
                                     whileHover={{ y: -4, scale: 1.1 }}
-                                    className="p-3.5  bg-white/5 border border-white/10 rounded-2xl text-[var(--text)] hover:text-[var(--primary)] hover:border-[var(--primary)]/40 transition-all duration-300"
+                                    className="p-3.5 bg-white/5 border border-white/10 rounded-2xl text-[var(--text)] hover:text-[var(--primary)] hover:border-[var(--primary)]/40 transition-all duration-300"
                                 >
                                     <span className="text-xl">{link.icon}</span>
                                 </motion.a>
@@ -87,17 +92,17 @@ const Footer = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left"
+                        className="lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-start"
                     >
                         <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--primary)] mb-8 opacity-80">
-                            Explore
+                            {t('explore')}
                         </h3>
                         <ul className="space-y-4">
-                            {navLinks.map((item,id) => (
+                            {navLinks.map((item, id) => (
                                 <li key={id}>
                                     <Link
                                         href={item.href}
-                                        className="text-sm  items-center gap-2 flex text-[var(--paragraph)] opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all duration-300"
+                                        className="text-sm items-center gap-2 flex text-[var(--paragraph)] opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all duration-300"
                                     >
                                         <span className="text-[var(--accent)]">{item.icon}</span> {item.name}
                                     </Link>
@@ -112,13 +117,13 @@ const Footer = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.15 }}
-                        className="lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left"
+                        className="lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-start"
                     >
                         <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--accent)] mb-8 opacity-80">
-                            Expertise
+                            {t('expertise')}
                         </h3>
                         <ul className="space-y-4">
-                            {expertise.map((item) => (
+                            {expertiseList.map((item) => (
                                 <li
                                     key={item}
                                     className="text-sm text-[var(--paragraph)] opacity-50"
@@ -137,13 +142,13 @@ const Footer = () => {
                         transition={{ delay: 0.2 }}
                         className="lg:col-span-3 flex justify-center sm:justify-end items-start"
                     >
-                        <div className="w-full max-w-[260px] p-7 rounded-[2rem]   backdrop-blur-md space-y-5">
+                        <div className="w-full max-w-[260px] p-7 rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-md space-y-5">
                             <div>
                                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--paragraph)] opacity-40 mb-1">
-                                    Available for work
+                                    {t('cta.status')}
                                 </p>
                                 <h4 className="text-lg font-black text-[var(--text)]">
-                                    Have a Vision?
+                                    {t('cta.title')}
                                 </h4>
                             </div>
 
@@ -151,8 +156,8 @@ const Footer = () => {
                                 href="mailto:mustafa.nouh.nouh@gmail.com"
                                 className="group flex items-center justify-center gap-2.5 w-full py-3.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white text-sm font-black rounded-xl hover:shadow-[0_0_24px_rgba(124,58,237,0.35)] transition-all duration-300"
                             >
-                                <FaEnvelope className="group-hover:rotate-12 transition-transform duration-300" />
-                                Hire Me
+                                <FaEnvelope className={`${isRtl ? 'group-hover:-rotate-12' : 'group-hover:rotate-12'} transition-transform duration-300`} />
+                                {t('cta.hire_me')}
                             </a>
 
                             <a
@@ -162,7 +167,7 @@ const Footer = () => {
                                 className="group flex items-center justify-center gap-2.5 w-full py-3.5 bg-white/5 border border-white/10 text-[var(--text)] text-sm font-bold rounded-xl hover:border-[#25d366]/40 hover:text-[#25d366] transition-all duration-300"
                             >
                                 <FaWhatsapp className="group-hover:scale-110 transition-transform duration-300" />
-                                WhatsApp
+                                {t('cta.whatsapp')}
                             </a>
                         </div>
                     </motion.div>
@@ -172,14 +177,14 @@ const Footer = () => {
                 {/* ─── Bottom Bar ─── */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
 
-                    <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--paragraph)] opacity-30">
-                        © {currentYear} Mustafa Nouh • Crafted with Passion
+                    <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--paragraph)] opacity-30 text-center">
+                        {t('bottom.rights', { year: currentYear })}
                     </p>
 
                     <div className="flex items-center gap-3">
                         <div className="h-1.5 w-1.5 bg-[#25d366] rounded-full animate-pulse" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--paragraph)] opacity-40">
-                            Aleppo, Syria
+                            {t('bottom.location')}
                         </span>
                     </div>
 
