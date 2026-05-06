@@ -64,7 +64,7 @@ const About = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 gap-6 bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 backdrop-blur-md rounded-3xl p-6 md:p-8"
+              className="grid grid-cols-1 hidden md:block gap-6 bg-[var(--foreground)]/5 border border-[var(--foreground)]/10 backdrop-blur-md rounded-3xl p-6 md:p-8"
             >
               {/* Stats Item: Frontend */}
               <div className={`flex flex-col sm:flex-row items-center gap-4 ${isRtl ? 'sm:flex-row-reverse text-right' : 'text-left'}`}>
