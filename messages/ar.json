@@ -1,0 +1,14 @@
+{
+  "Settings": {
+    "title": "إعدادات اللغة",
+    "languageLabel": "اختر لغتك المفضلة",
+    "appearance_title": "مظهر التطبيق",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "تلقائي",
+    "language_title": "لغة النظام"
+  },
+  "Index": {
+    "title": "مرحباً بك في معرض أعمالي"
+  }
+}

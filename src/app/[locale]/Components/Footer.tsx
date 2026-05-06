@@ -8,7 +8,7 @@ import {
     FaEnvelope
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { LuBriefcase, LuHouse, LuLayoutDashboard, LuMail, LuUser } from "react-icons/lu";
+import { LuBriefcase, LuCpu, LuHouse, LuLayoutDashboard, LuMail, LuUser } from "react-icons/lu";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -23,7 +23,7 @@ const Footer = () => {
        const navLinks = [
             { name: 'Home', href: '/', icon: <LuHouse /> },
             { name: 'Services', href: '#services', icon: <LuBriefcase /> },
-            {name:'Skills',href:'#Skills' ,icon:<>/\</>},
+            {name:'Skills',href:'#Skills' ,icon:<LuCpu/>},
             { name: 'Projects', href: '#projects', icon: <LuLayoutDashboard /> },
             { name: 'About', href: '#about', icon: <LuUser /> },
             { name: 'Contact', href: '#contact', icon: <LuMail /> },

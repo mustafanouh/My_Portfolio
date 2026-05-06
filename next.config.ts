@@ -1,10 +1,17 @@
-import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
+// 1. إنشاء المكون الإضافي مع تحديد مسار ملف الإعداد
+const withNextIntl = createNextIntlPlugin(
+  './src/i18n/request.ts'
+);
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  /* config options here */
+  /* يمكنك إضافة خيارات أخرى هنا */
 };
 
-export default nextConfig;
+// 2. تصدير الإعدادات مغلفة بـ withNextIntl
+export default withNextIntl(nextConfig);

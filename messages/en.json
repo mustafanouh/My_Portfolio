@@ -1,0 +1,14 @@
+{
+  "Settings": {
+    "title": "Language Settings",
+    "languageLabel": "Choose your preferred language",
+    "appearance_title": "Appearance",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "language_title": "System Language"
+  },
+  "Index": {
+    "title": "Welcome to my portfolio"
+  }
+}
