@@ -62,7 +62,7 @@ export const Myproject = [
         tags: ['HTML', 'CSS', 'JavaScript'],
         imgpath: "/img/ecom.png",
         path: "https://github.com/mustafanouh/ecommerce-product-page-main/",
-        LivePath: "https://mustafanouh.github.io/ecommerce-product-page-main/",
+        LivePath: "",
         subTitle: "Interactive product interface with cart logic, gallery lightboxes, and dynamic state management."
     },
     {

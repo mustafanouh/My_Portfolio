@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
     motion,
     useMotionValue,
@@ -11,11 +11,6 @@ import {
     SiJavascript, SiPhp, SiMysql, SiFirebase
 } from "react-icons/si";
 
-const wrap = (min: number, max: number, v: number) => {
-    const rangeSize = max - min;
-    return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
-};
-
 const skills = [
     { name: "React", icon: <SiReact />, color: "text-[#61DAFB]" },
     { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
@@ -25,71 +20,62 @@ const skills = [
     { name: "PHP", icon: <SiPhp />, color: "text-[#777BB4]" },
     { name: "MySQL", icon: <SiMysql />, color: "text-[#4479A1]" },
     { name: "Firebase", icon: <SiFirebase />, color: "text-[#FFCA28]" },
-    
 ];
 
-const ITEMS_COUNT = 6;
-
 const SkillsMarquee = () => {
-    const [isPaused, setIsPaused] = useState(false);
-    const baseX = useMotionValue(0);
-    const directionFactor = useRef(1);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const scrolledX = useMotionValue(0);
+    const [contentWidth, setContentWidth] = useState(0);
 
-    const SPEED = 5;
+    // حساب عرض المحتوى الحقيقي عند التحميل
+    useEffect(() => {
+        if (containerRef.current) {
+            // نقسم على 2 لأننا سنكرر المصفوفة مرتين
+            setContentWidth(containerRef.current.scrollWidth / 2);
+        }
+    }, []);
+
+    // سرعة الحركة (بيكسل في الثانية)
+    const SPEED = 40; 
+
     useAnimationFrame((_, delta) => {
-        if (isPaused) return;
-        const moveBy = directionFactor.current * SPEED * (delta / 1000);
-        baseX.set(baseX.get() + moveBy);
-    });
+        if (contentWidth === 0) return;
 
-    const x = useTransform(baseX, (v) => {
-        const singleGroupWidth = 100 / ITEMS_COUNT;
-        return `${wrap(-singleGroupWidth * 2, 0, -(v % (100)))}%`;
-    });
+        // حساب القيمة الجديدة
+        let moveBy = (SPEED * delta) / 1000;
+        let newValue = scrolledX.get() - moveBy;
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-        const { clientX } = e;
-        const { innerWidth } = window;
-        directionFactor.current = clientX > innerWidth / 2 ? 1 : -1;
-    };
+        // إعادة ضبط القيمة (Reset) عند تجاوز عرض المجموعة الأولى لضمان اللانهائية
+        if (newValue <= -contentWidth) {
+            newValue = 0;
+        }
+
+        scrolledX.set(newValue);
+    });
 
     return (
-        <section
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            className="relative w-full  bg-[var(--background)]
-                       overflow-hidden  border-white/5 cursor-ew-resize"
-        >
-            <div className="absolute inset-y-0 left-0 w-24 md:w-40
-                            bg-gradient-to-r from-[var(--background)]
-                            to-transparent z-20 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 md:w-40
-                            bg-gradient-to-l from-[var(--background)]
-                            to-transparent z-20 pointer-events-none" />
+        <section className="relative w-full overflow-hidden bg-[var(--background)] py-12">
+            {/* التدرجات الجانبية لإخفاء الحواف */}
+            <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-20 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-20 pointer-events-none" />
 
             <motion.div
-                style={{ x }}
-                className="flex gap-8 items-center whitespace-nowrap
-                            will-change-transform"
+                ref={containerRef}
+                style={{ x: scrolledX }}
+                className="flex whitespace-nowrap will-change-transform"
             >
-                {[...Array(ITEMS_COUNT)].map((_, i) => (
-                    <div key={i} className="flex gap-8 items-center">
+                {/* نكرر المصفوفة مرتين فقط لخلق تأثير الحلقة اللانهائية */}
+                {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex gap-6 items-center px-3">
                         {skills.map((skill, index) => (
                             <div
                                 key={index}
-                                className="flex items-center gap-4 px-8 py-5
-                                           bg-white/5 border border-white/10
-                                           rounded-[2rem] backdrop-blur-md group
-                                           hover:border-[var(--primary)]/40
-                                           transition-all duration-500"
+                                className="flex items-center gap-4 px-8 py-5 bg-white/5 border border-white/10 rounded-[2rem] backdrop-blur-md"
                             >
-                                <span className={`text-3xl md:text-4xl ${skill.color}
-                                    group-hover:scale-110 transition-transform`}>
+                                <span className={`text-3xl md:text-4xl ${skill.color}`}>
                                     {skill.icon}
                                 </span>
-                                <span className="text-[var(--text)] font-black text-lg
-                                                md:text-xl tracking-tighter uppercase">
+                                <span className="text-white font-black text-lg md:text-xl tracking-tighter uppercase">
                                     {skill.name}
                                 </span>
                             </div>

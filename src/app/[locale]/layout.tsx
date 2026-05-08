@@ -34,7 +34,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
+    <html suppressHydrationWarning lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} >
       <body className={`${cairo.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header/>
