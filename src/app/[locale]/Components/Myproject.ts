@@ -2,7 +2,7 @@ export const Myproject = [
     {
         projectTitle: "EduManage Pro",
         category: "Full Stack",
-        imgpath: "/img/System Management School.png",
+        imgpath: "/img/System Management School.webp",
         tags: ['Php', 'MySQL', 'Laravel','tailwind CSS', 'JavaScript', 'Blade','Alpine.js','MVC'],
         path: "https://github.com/mustafanouh/School-Administration",
         LivePath: "", 
@@ -12,7 +12,7 @@ export const Myproject = [
         projectTitle: "UniStay Hub",
         category: "Full Stack",
         tags: [ 'JavaScript', 'React', 'Laravel', 'tailwind CSS', 'Php', 'MySQL','zustand','ReactQuery'],
-        imgpath: "/img/Administration Housing University.jpg",
+        imgpath: "/img/Administration Housing University.webp",
         path: "https://github.com/mustafanouh/University-Housing-Administration/tree/main/frontEnd",
         LivePath: "",
         subTitle: "Automated student accommodation platform featuring room allocation and residence management."
@@ -21,7 +21,7 @@ export const Myproject = [
         projectTitle: "Elite Store Template",
         category: "Web Design",
         tags: ['HTML', 'CSS', 'JavaScript', 'tailwind CSS', ' Rest FullAPI'],
-        imgpath: "img/store.png",
+        imgpath: "img/store.webp",
         path: "https://github.com/mustafanouh/Store/",
         LivePath: "https://mustafanouh.github.io/Store/",
         subTitle: "A clean, multi-page e-commerce layout focused on semantic HTML and modern CSS architecture."
@@ -31,7 +31,7 @@ export const Myproject = [
         projectTitle: "AdminInsight Dashboard",
         category: "Web Design",
         tags: ['HTML', 'CSS', 'JavaScript'],
-        imgpath: "/img/project-four.png",
+        imgpath: "/img/project-four.webp",
         path: "https://github.com/mustafanouh/Dashboard/",
         LivePath: "https://mustafanouh.github.io/Dashboard/",
         subTitle: "Complex data visualization interface built with CSS Grid, Flexbox, and meticulous UI detailing."
@@ -40,7 +40,7 @@ export const Myproject = [
         projectTitle: "Bondi Creative Agency",
         category: "Frameworks",
         tags: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
-        imgpath: "/img/bondi.png",
+        imgpath: "/img/bondi.webp",
 
         path: "https://github.com/mustafanouh/bondi/",
         LivePath: "https://mustafanouh.github.io/bondi/",
@@ -51,7 +51,7 @@ export const Myproject = [
         category: "Web Design",
         tags: ['HTML', 'CSS', 'JavaScript'],
 
-        imgpath: "/img/javascriptPage.png",
+        imgpath: "/img/javascriptPage.webp",
         path: "https://github.com/mustafanouh/spacial-Desgin/",
         LivePath: "https://mustafanouh.github.io/spacial-Desgin/",
         subTitle: "Dynamic user experience powered by vanilla JavaScript for custom animations and state-driven UI."
@@ -60,7 +60,7 @@ export const Myproject = [
         projectTitle: "SwiftCart Product Page",
         category: "Web Design",
         tags: ['HTML', 'CSS', 'JavaScript'],
-        imgpath: "/img/ecom.png",
+        imgpath: "/img/ecom.webp",
         path: "https://github.com/mustafanouh/ecommerce-product-page-main/",
         LivePath: "",
         subTitle: "Interactive product interface with cart logic, gallery lightboxes, and dynamic state management."
@@ -69,7 +69,7 @@ export const Myproject = [
         projectTitle: "Personal Brand Portfolio",
         category: "Frameworks",
         tags: ['JavaScript', 'React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
-        imgpath: "/img/protfile.png",
+        imgpath: "/img/protfile.webp",
         path: "https://github.com/mustafanouh/Mustafa_Nouh_profile",
         LivePath: "#",
         subTitle: "Professional developer showcase featuring React.js components and fluid Framer Motion animations."
@@ -78,7 +78,7 @@ export const Myproject = [
         projectTitle: "Visual Architecture Portfolio",
         category: "Web Design",
         tags: ['HTML', 'CSS'],
-        imgpath: "img/project-two.png",
+        imgpath: "img/project-two.webp",
         path: "https://github.com/mustafanouh/project-two-by-html-and-css/",
         LivePath: "https://mustafanouh.github.io/project-two-by-html-and-css/",
         subTitle: "Academic project focusing on structured CSS layouts and design consistency."
@@ -87,7 +87,7 @@ export const Myproject = [
         projectTitle: "Modern Agency Concept",
         category: "Web Design",
         tags: ['HTML', 'CSS'],
-        imgpath: "img/project-three.png",
+        imgpath: "img/project-three.webp",
         path: "https://github.com/mustafanouh/landing_page_two/",
         LivePath: "https://mustafanouh.github.io/landing_page_two/",
         subTitle: "Exploration of modern web aesthetics and multi-section page architecture."
@@ -96,7 +96,7 @@ export const Myproject = [
         projectTitle: "Architectural Blueprint UI",
         category: "Web Design",
         tags: ['HTML', 'CSS'],
-        imgpath: "img/architecture.png",
+        imgpath: "img/architecture.webp",
         path: "https://github.com/mustafanouh/architecture/",
         LivePath: "https://mustafanouh.github.io/architecture/",
         subTitle: "Specialized layout design focusing on clean typography and structured content flow."

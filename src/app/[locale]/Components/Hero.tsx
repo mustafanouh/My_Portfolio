@@ -10,7 +10,7 @@ const Hero = () => {
   const locale = useLocale();
   const isRtl = locale === 'ar';
 
-  // جلب العناوين ديناميكياً من ملف الترجمة
+
   const titles = t.raw("titles") as string[];
   const [index, setIndex] = useState(0);
 
@@ -27,7 +27,7 @@ const Hero = () => {
       dir={isRtl ? "rtl" : "ltr"}
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[var(--background)] px-6 md:px-16 py-20"
     >
-      {/* خلفية ديناميكية (الإضاءة الجانبية) */}
+    
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-[5%] -left-[5%] w-[50%] h-[50%] bg-[var(--primary)]/10 blur-[120px] rounded-full" />
         <div className="absolute -bottom-[5%] -right-[5%] w-[50%] h-[50%] bg-[var(--accent)]/10 blur-[120px] rounded-full" />
@@ -35,7 +35,7 @@ const Hero = () => {
 
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16 z-10">
 
-        {/* قسم المحتوى النصي */}
+      
         <div className={`flex-1 flex flex-col items-center lg:items-start ${isRtl ? 'lg:text-right' : 'lg:text-left'} text-center w-full order-2 lg:order-1`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ const Hero = () => {
               {t("name")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">{t("surname")}</span>
             </h1>
 
-            {/* حاوية العناوين المتحركة */}
+           
             <div className="min-h-[3rem] md:min-h-[4rem] mb-2 flex items-center justify-center lg:justify-start">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -73,7 +73,7 @@ const Hero = () => {
               {t("description")}
             </p>
 
-            {/* أزرار التفاعل */}
+        
             <div className="flex flex-col sm:flex-row gap-4 mb-12 w-full sm:w-auto">
               <motion.a
                 href="/files/CV_Mustafa_Nouh.pdf"
@@ -95,7 +95,7 @@ const Hero = () => {
               </motion.a>
             </div>
 
-            {/* أيقونات التواصل الاجتماعي */}
+        
             <div className="flex gap-4 justify-center lg:justify-start">
               {[
                 { icon: <FiGithub />, link: "https://github.com/mustafanouh", color: "#333" },
@@ -129,7 +129,7 @@ const Hero = () => {
             className="relative w-72 h-72 md:w-[450px] md:h-[450px]"
 
           >
-            {/* تأثير الإضاءة خلف الصورة */}
+           
             {/* Background Animations */}
 
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] rounded-[2rem] rotate-6 opacity-20 blur-2xl animate-pulse" />
@@ -142,7 +142,7 @@ const Hero = () => {
 
               <img
 
-                src="./img/mustafa-1.jpg"
+                src="./img/mustafa-1.webp"
 
                 alt="Mustafa Nouh"
 
