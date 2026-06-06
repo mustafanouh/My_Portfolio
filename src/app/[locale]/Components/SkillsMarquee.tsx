@@ -4,7 +4,7 @@ import {
     motion,
     useMotionValue,
     useAnimationFrame,
-    useTransform
+   
 } from "framer-motion";
 import {
     SiReact, SiNextdotjs, SiTailwindcss, SiLaravel,
@@ -27,25 +27,20 @@ const SkillsMarquee = () => {
     const scrolledX = useMotionValue(0);
     const [contentWidth, setContentWidth] = useState(0);
 
-    // حساب عرض المحتوى الحقيقي عند التحميل
     useEffect(() => {
         if (containerRef.current) {
-            // نقسم على 2 لأننا سنكرر المصفوفة مرتين
             setContentWidth(containerRef.current.scrollWidth / 2);
         }
     }, []);
 
-    // سرعة الحركة (بيكسل في الثانية)
     const SPEED = 40; 
 
     useAnimationFrame((_, delta) => {
         if (contentWidth === 0) return;
 
-        // حساب القيمة الجديدة
         let moveBy = (SPEED * delta) / 1000;
         let newValue = scrolledX.get() - moveBy;
 
-        // إعادة ضبط القيمة (Reset) عند تجاوز عرض المجموعة الأولى لضمان اللانهائية
         if (newValue <= -contentWidth) {
             newValue = 0;
         }
@@ -54,8 +49,7 @@ const SkillsMarquee = () => {
     });
 
     return (
-        <section className="relative w-full overflow-hidden bg-[var(--background)] py-12">
-            {/* التدرجات الجانبية لإخفاء الحواف */}
+        <section className="relative w-full overflow-hidden bg-[var(--background)] py-4">
             <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-20 pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-20 pointer-events-none" />
 
@@ -64,7 +58,6 @@ const SkillsMarquee = () => {
                 style={{ x: scrolledX }}
                 className="flex whitespace-nowrap will-change-transform"
             >
-                {/* نكرر المصفوفة مرتين فقط لخلق تأثير الحلقة اللانهائية */}
                 {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex gap-6 items-center px-3">
                         {skills.map((skill, index) => (
@@ -75,7 +68,7 @@ const SkillsMarquee = () => {
                                 <span className={`text-3xl md:text-4xl ${skill.color}`}>
                                     {skill.icon}
                                 </span>
-                                <span className="text-white font-black text-lg md:text-xl tracking-tighter uppercase">
+                                <span className="text-[var(--primary)] font-black text-lg md:text-xl tracking-tighter uppercase">
                                     {skill.name}
                                 </span>
                             </div>

@@ -25,7 +25,7 @@ const Footer = () => {
     ];
 
     const navLinks = [
-        { name: t('nav.home'), href: '/', icon: <LuHouse /> },
+        { name: t('nav.home'), href: '#home', icon: <LuHouse /> },
         { name: t('nav.services'), href: '#services', icon: <LuBriefcase /> },
         { name: t('nav.skills'), href: '#Skills', icon: <LuCpu /> },
         { name: t('nav.projects'), href: '#projects', icon: <LuLayoutDashboard /> },
@@ -33,7 +33,6 @@ const Footer = () => {
         { name: t('nav.contact'), href: '#contact', icon: <LuMail /> },
     ];
 
-    // لجلب المصفوفة من JSON
     const expertiseList = t.raw('expertise_list') as string[];
 
     return (

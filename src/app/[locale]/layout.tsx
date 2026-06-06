@@ -18,6 +18,12 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
+
+export const metadata = {
+  title: "Mustafa Nouh - Full-Stack Developer Portfolio",
+  description: " descripcion breve de tu sitio para mejorar el posicionamiento en buscadores (SEO)",
+};
+
 export default async function RootLayout({
   children,
   params
@@ -37,9 +43,9 @@ export default async function RootLayout({
     <html suppressHydrationWarning lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} >
       <body className={`${cairo.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header/>
+          <Header />
           <Providers>{children}</Providers>
-          <Footer/>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

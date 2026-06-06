@@ -13,35 +13,30 @@ const Header = () => {
     const menuRef = useRef<HTMLDivElement>(null);
 
     const navLinks = [
-        { name: 'Home', href: '/', icon: <LuHouse /> },
+        { name: 'Home', href: '#home', icon: <LuHouse /> },
         { name: 'Services', href: '#services', icon: <LuBriefcase /> },
         { name: 'Projects', href: '#projects', icon: <LuLayoutDashboard /> },
         { name: 'About', href: '#about', icon: <LuUser /> },
         { name: 'Contact', href: '#contact', icon: <LuMail /> },
     ];
 
-    // 2. منطق إغلاق القائمة عند الضغط في الخارج
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            // إذا كانت القائمة مفتوحة والضغطة تمت خارج عنصر الـ menuRef
             if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
                 setIsOpen(false);
             }
         };
 
-        // إضافة المستمع عند فتح القائمة
         if (isOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         }
 
-        // تنظيف المستمع عند إغلاق القائمة أو إلغاء تحميل المكون
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen]);
 
     return (
-        // 3. ربط الـ ref بالـ nav الرئيسي
         <nav
             ref={menuRef}
             style={{ backgroundColor: 'oklch(from var(--background) l c h / 0.95)' }}

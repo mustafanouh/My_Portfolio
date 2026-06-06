@@ -7,7 +7,7 @@ import SkillsMarquee from "./Components/SkillsMarquee";
 import Contact from "./Components/Contact";
 import Services from "./Components/Services";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <section id="home"><Hero /></section>
