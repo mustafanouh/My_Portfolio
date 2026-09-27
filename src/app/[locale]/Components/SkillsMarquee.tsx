@@ -1,74 +1,219 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
 import {
-    motion,
-    useMotionValue,
-    useAnimationFrame,
-   
-} from "framer-motion";
-import {
-    SiReact, SiNextdotjs, SiTailwindcss, SiLaravel,
-    SiJavascript, SiPhp, SiMysql, SiFirebase
+    SiReact,
+    SiNextdotjs,
+    SiTailwindcss,
+    SiLaravel,
+    SiJavascript,
+    SiPhp,
+    SiMysql,
+    SiFirebase,
 } from "react-icons/si";
 
 const skills = [
-    { name: "React", icon: <SiReact />, color: "text-[#61DAFB]" },
-    { name: "Next.js", icon: <SiNextdotjs />, color: "text-white" },
-    { name: "Tailwind", icon: <SiTailwindcss />, color: "text-[#06B6D4]" },
-    { name: "Laravel", icon: <SiLaravel />, color: "text-[#FF2D20]" },
-    { name: "JavaScript", icon: <SiJavascript />, color: "text-[#F7DF1E]" },
-    { name: "PHP", icon: <SiPhp />, color: "text-[#777BB4]" },
-    { name: "MySQL", icon: <SiMysql />, color: "text-[#4479A1]" },
-    { name: "Firebase", icon: <SiFirebase />, color: "text-[#FFCA28]" },
+    {
+        name: "React",
+        icon: <SiReact />,
+        color: "text-[#61DAFB]",
+    },
+    {
+        name: "Next.js",
+        icon: <SiNextdotjs />,
+        color: "text-white",
+    },
+    {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss />,
+        color: "text-[#06B6D4]",
+    },
+    {
+        name: "Laravel",
+        icon: <SiLaravel />,
+        color: "text-[#FF2D20]",
+    },
+    {
+        name: "JavaScript",
+        icon: <SiJavascript />,
+        color: "text-[#F7DF1E]",
+    },
+    {
+        name: "PHP",
+        icon: <SiPhp />,
+        color: "text-[#777BB4]",
+    },
+    {
+        name: "MySQL",
+        icon: <SiMysql />,
+        color: "text-[#4479A1]",
+    },
+    {
+        name: "Firebase",
+        icon: <SiFirebase />,
+        color: "text-[#FFCA28]",
+    },
 ];
 
 const SkillsMarquee = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const scrolledX = useMotionValue(0);
+    const marqueeRef = useRef<HTMLDivElement>(null);
+    const x = useMotionValue(0);
+
     const [contentWidth, setContentWidth] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    const SPEED = 45;
 
     useEffect(() => {
-        if (containerRef.current) {
-            setContentWidth(containerRef.current.scrollWidth / 2);
-        }
+        const element = marqueeRef.current;
+
+        if (!element) return;
+
+        const updateWidth = () => {
+            setContentWidth(element.scrollWidth / 2);
+        };
+
+        updateWidth();
+
+        const resizeObserver = new ResizeObserver(updateWidth);
+        resizeObserver.observe(element);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
     }, []);
 
-    const SPEED = 40; 
-
     useAnimationFrame((_, delta) => {
-        if (contentWidth === 0) return;
+        if (!contentWidth || isHovered) return;
 
-        let moveBy = (SPEED * delta) / 1000;
-        let newValue = scrolledX.get() - moveBy;
+        const distance = (SPEED * delta) / 1000;
+        const currentX = x.get();
 
-        if (newValue <= -contentWidth) {
-            newValue = 0;
-        }
+        const nextX = currentX - distance;
 
-        scrolledX.set(newValue);
+        x.set(nextX <= -contentWidth ? 0 : nextX);
     });
 
     return (
-        <section className="relative w-full overflow-hidden bg-[var(--background)] py-4">
-            <div className="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-[var(--background)] to-transparent z-20 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-[var(--background)] to-transparent z-20 pointer-events-none" />
+        <section
+            className="
+                relative
+                w-full
+                overflow-hidden
+                bg-[var(--background)]
+                py-6
+            "
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {/* Left fade */}
+            <div
+                className="
+                    pointer-events-none
+                    absolute
+                    inset-y-0
+                    left-0
+                    z-10
+                    w-20
+                    md:w-36
+                    bg-gradient-to-r
+                    from-[var(--background)]
+                    via-[var(--background)]/80
+                    to-transparent
+                "
+            />
+
+            {/* Right fade */}
+            <div
+                className="
+                    pointer-events-none
+                    absolute
+                    inset-y-0
+                    right-0
+                    z-10
+                    w-20
+                    md:w-36
+                    bg-gradient-to-l
+                    from-[var(--background)]
+                    via-[var(--background)]/80
+                    to-transparent
+                "
+            />
 
             <motion.div
-                ref={containerRef}
-                style={{ x: scrolledX }}
-                className="flex whitespace-nowrap will-change-transform"
+                ref={marqueeRef}
+                style={{ x }}
+                className="
+                    flex
+                    w-max
+                    items-center
+                    whitespace-nowrap
+                    will-change-transform
+                "
             >
-                {[...Array(2)].map((_, i) => (
-                    <div key={i} className="flex gap-6 items-center px-3">
-                        {skills.map((skill, index) => (
+                {[0, 1].map((copy) => (
+                    <div
+                        key={copy}
+                        className="
+                            flex
+                            shrink-0
+                            items-center
+                            gap-4
+                            px-2
+                            md:gap-6
+                            md:px-3
+                        "
+                    >
+                        {skills.map((skill) => (
                             <div
-                                key={index}
-                                className="flex items-center gap-4 px-8 py-5 bg-white/5 border border-white/10 rounded-[2rem] backdrop-blur-md"
+                                key={`${copy}-${skill.name}`}
+                                className="
+                                    group
+                                    flex
+                                    shrink-0
+                                    items-center
+                                    gap-3
+                                    rounded-2xl
+                                    border
+                                    border-white/10
+                                    bg-white/[0.04]
+                                    px-5
+                                    py-3
+                                    backdrop-blur-md
+                                    transition-all
+                                    duration-300
+                                    hover:-translate-y-1
+                                    hover:border-white/20
+                                    hover:bg-white/[0.08]
+                                    md:gap-4
+                                    md:rounded-[1.5rem]
+                                    md:px-7
+                                    md:py-4
+                                "
                             >
-                                <span className={`text-3xl md:text-4xl ${skill.color}`}>
+                                <span
+                                    className={`
+                                        ${skill.color}
+                                        text-2xl
+                                        transition-transform
+                                        duration-300
+                                        group-hover:scale-110
+                                        md:text-3xl
+                                    `}
+                                >
                                     {skill.icon}
                                 </span>
-                                <span className="text-[var(--primary)] font-black text-lg md:text-xl tracking-tighter uppercase">
+
+                                <span
+                                    className="
+                                        text-sm
+                                        font-bold
+                                        tracking-tight
+                                        text-[var(--primary)]
+                                        md:text-base
+                                    "
+                                >
                                     {skill.name}
                                 </span>
                             </div>

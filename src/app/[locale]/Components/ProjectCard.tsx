@@ -35,7 +35,7 @@ const ProjectCard = () => {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((cat) => (
+          {/* {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => handleFilter(cat)}
@@ -48,7 +48,7 @@ const ProjectCard = () => {
             >
               {cat === "All" ? t("all_projects") : t(`categories.${cat}`)}
             </button>
-          ))}
+          ))} */}
         </div>
 
         {/* Grid Container */}
@@ -97,14 +97,14 @@ const ProjectCard = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mt-2">
-                    {item.tags?.map((tag) => (
+                    {/* {item.tags?.map((tag) => (
                       <span
                         key={tag}
                         className="text-[9px] font-bold px-2 py-0.5 rounded-md border dark:border-white/5 border-black/5 bg-black/[0.02] dark:bg-white/[0.02] text-[var(--accent)]"
                       >
                         {tag}
                       </span>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
 

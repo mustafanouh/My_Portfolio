@@ -142,7 +142,7 @@ const Hero = () => {
 
               <img
 
-                src="./img/mustafa-1.webp"
+                src="./img/mustafa-1.jpg"
 
                 alt="Mustafa Nouh"
 
