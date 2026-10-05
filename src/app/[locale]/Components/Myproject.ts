@@ -120,13 +120,13 @@ export const Myproject = [
     //     LivePath: "https://mustafanouh.github.io/landing_page_two/",
     //     subTitle: "Exploration of modern web aesthetics and multi-section page architecture."
     // },
-    {
-        projectTitle: "Architectural Blueprint UI",
-        category: "Web Design",
-        // tags: ['HTML', 'CSS'],
-        imgpath: "img/architecture.webp",
-        path: "https://github.com/mustafanouh/architecture/",
-        LivePath: "https://mustafanouh.github.io/architecture/",
-        subTitle: "Specialized layout design focusing on clean typography and structured content flow."
-    }
+    // {
+    //     projectTitle: "Architectural Blueprint UI",
+    //     category: "Web Design",
+    //     // tags: ['HTML', 'CSS'],
+    //     imgpath: "img/architecture.webp",
+    //     path: "https://github.com/mustafanouh/architecture/",
+    //     LivePath: "https://mustafanouh.github.io/architecture/",
+    //     subTitle: "Specialized layout design focusing on clean typography and structured content flow."
+    // }
 ];
