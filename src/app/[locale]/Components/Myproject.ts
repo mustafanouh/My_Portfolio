@@ -1,11 +1,11 @@
 export const Myproject = [
-     {
+    {
         projectTitle: "NexTalk",
         category: "Full Stack",
         imgpath: "/img/nextalk.jpg",
         // tags: ['Php', 'MySQL', 'Laravel','tailwind CSS', 'JavaScript', 'Blade','Alpine.js','MVC'],
         path: "https://github.com/mustafanouh/nextalk-frontEnd",
-        LivePath: "https://nexttalkmustafanouh.netlify.app", 
+        LivePath: "https://nexttalkmustafanouh.netlify.app",
         subTitle: "- Built a real-time messaging and audio/video calling platform using Laravel Reverb and WebRTC, with signaling for offer/answer/ICE exchange and a call state machine..."
     },
     {
@@ -17,22 +17,22 @@ export const Myproject = [
         // LivePath: "", 
         subTitle: "Meal-kit and recipe delivery platform covering recipes, orders, inventory, packing, delivery, payments, and promotions.."
     },
-     {
+    {
         projectTitle: "Healthcare Manage ",
         category: "Full Stack",
         imgpath: "/img/healthcare.jpg",
         // tags: ['Php', 'MySQL', 'Laravel','tailwind CSS', 'JavaScript', 'Blade','Alpine.js','MVC'],
         path: "https://github.com/mustafanouh/healthcare-frontend",
-        LivePath: "https://healthcaremustafanouh.netlify.app", 
+        LivePath: "https://healthcaremustafanouh.netlify.app",
         subTitle: "A centralized healthcare platform that standardizes facility management, unifies patient care workflows, and securely shares medical records under role-based access controls..."
     },
-     {
+    {
         projectTitle: "EduManage Pro",
         category: "Full Stack",
         imgpath: "/img/System Management School.jpg",
         // tags: ['Php', 'MySQL', 'Laravel','tailwind CSS', 'JavaScript', 'Blade','Alpine.js','MVC'],
         path: "https://github.com/mustafanouh/School-Administration",
-        LivePath: "", 
+        LivePath: "",
         subTitle: "A comprehensive solution for academic administration, grading systems, and student records."
     },
     {
@@ -44,7 +44,7 @@ export const Myproject = [
         LivePath: "",
         subTitle: "Automated student accommodation platform featuring room allocation and residence management."
     },
-        {
+    {
         projectTitle: "Blog Gram",
         category: "Full Stack",
         // tags: [ 'JavaScript', 'React', 'Laravel', 'tailwind CSS', 'Php', 'MySQL','zustand','ReactQuery'],
@@ -52,6 +52,15 @@ export const Myproject = [
         path: "https://mustafanouh.github.io/BlogGram",
         LivePath: "https://mustafanouh.github.io/BlogGram",
         subTitle: "A modern article discovery platform built for seamless reading and exploration."
+    },
+     {
+        projectTitle: "Tafaqqud",
+        category: "Web Design",
+        // tags: ['HTML', 'CSS', 'JavaScript', 'tailwind CSS', ' Rest FullAPI'],
+        imgpath: "img/photo_٢٠٢٦-١١-٠٩_٢٠-٠٣-٥٨.jpg",
+        // path: "https://github.com/mustafanouh/Store/",
+        LivePath: "https://tafaqqud.netlify.app",
+        subTitle: "Offline-first classroom management PWA built with React, TypeScript, and IndexedDB, covering attendance, grading, ranking, and PDF reports."
     },
     {
         projectTitle: " Store ",
